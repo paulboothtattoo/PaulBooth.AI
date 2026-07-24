@@ -1,0 +1,88 @@
+PAULBOOTH.AI AUTOMATIC CONTENT FOLDERS
+
+FOLDERS
+-------
+content/ai-platforms
+content/visual-work
+content/motion
+content/research
+content/experiments
+content/machines
+
+HOW IT WORKS
+------------
+
+OPTION A — PHP HOSTING (fully automatic)
+Upload the entire site to hosting that supports PHP.
+Drop files into the correct content folder by FTP or the hosting file manager.
+Refresh the website. The new files appear automatically.
+
+OPTION B — STATIC HOSTING
+Drop files into the correct folder.
+Double-click update-content.bat on Windows.
+Upload the changed content folders and content-manifest.json.
+The files then appear on the website.
+
+SUPPORTED FILES
+---------------
+Images: JPG, JPEG, PNG, WEBP, GIF, AVIF
+Video: MP4, WEBM, MOV
+Audio: MP3, WAV, OGG, M4A
+Documents: PDF
+
+OPTIONAL DESCRIPTIONS
+---------------------
+Place a JSON file next to a media file using the same filename.
+
+Example:
+inklord-home.jpg
+inklord-home.json
+
+JSON:
+{
+  "title": "InkLord.ai",
+  "description": "AI tools for tattoo artists.",
+  "type": "AI Platform",
+  "status": "Active",
+  "date": "2026",
+  "link": "https://inklord.ai"
+}
+
+The filename becomes the title automatically when no JSON file is supplied.
+
+
+JSON METADATA IS NOW FULLY DISPLAYED
+------------------------------------
+The optional matching JSON file supplies and displays:
+
+- title
+- description
+- type
+- date
+- status
+- link
+
+The media file and JSON file must have the same base filename.
+
+CORRECT:
+biomechanical-machine.jpg
+biomechanical-machine.json
+
+INCORRECT:
+biomechanical-machine.jpg
+different-name.json
+
+EXAMPLE JSON:
+{
+  "title": "Biomechanical Machine Study",
+  "description": "A dark synthetic organism exploring the boundary between machinery and anatomy.",
+  "type": "Visual Work",
+  "date": "July 2026",
+  "status": "Completed",
+  "link": "https://paulbooth.ai/projects/biomechanical-machine-study"
+}
+
+The title becomes the card heading.
+The description appears beneath the project metadata.
+The date and status appear in a visible metadata row.
+The link changes the button from “Open File” to “Visit Project”.

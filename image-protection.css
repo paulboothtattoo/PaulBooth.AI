@@ -1,0 +1,44 @@
+/* PAULBOOTH.AI — SITE-WIDE MEDIA DOWNLOAD DETERRENCE */
+
+img,
+picture,
+video,
+audio,
+.protected-image,
+.realm-card-image,
+.about-photo-frame,
+.visions-photo-card,
+.folder-media-preview,
+.motion-folder-preview,
+.manifest-machine-preview,
+.bb-gallery,
+.bb-video-shell {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+/* Images remain clickable through their surrounding buttons/cards. */
+img {
+  pointer-events: none;
+}
+
+/* Keep native video/audio controls usable while suppressing selection/dragging. */
+video,
+audio {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Hide browser download controls where supported. */
+video::-internal-media-controls-download-button,
+audio::-internal-media-controls-download-button,
+video::-webkit-media-controls-download-button,
+audio::-webkit-media-controls-download-button {
+  display: none !important;
+}
+
+video::-webkit-media-controls-enclosure,
+audio::-webkit-media-controls-enclosure {
+  overflow: hidden;
+}

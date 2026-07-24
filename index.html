@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PaulBooth.ai — artificial intelligence, biomechanical design, motion, and digital evolution." />
+  <title>PaulBooth.ai — The Machine Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Oxanium:wght@300;400;500;600&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="visions-galleries.css" />
+  <link rel="stylesheet" href="image-protection.css" />
+  <style id="realm-centering-fix">
+    @media (min-width: 761px) {
+      #realm-grid.realm-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      #realm-grid.realm-grid > .realm-card {
+        flex: 0 0 calc((100% - 28px) / 3);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <a class="mini-brand" href="#top" aria-label="PaulBooth.ai home">
+      <span class="mini-brand-mark">PB</span>
+      <span>PAULBOOTH.AI</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#experiments">Experiments</a>
+      <a href="#visions">Visions</a>
+      <a href="#motion">Motion</a>
+      <a href="#machines">Machines</a>
+      <a href="#about">About</a>
+    </nav>
+    <button class="menu-button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-panel" aria-hidden="true">
+    <a href="#experiments">Active Experiments</a>
+    <a href="#visions">Synthetic Visions</a>
+    <a href="#motion">Motion Systems</a>
+    <a href="#machines">Intelligent Machines</a>
+    <a href="#about">About Paul Booth</a>
+  </div>
+
+  <main>
+    <section class="hero section-shell" id="hero-animation">
+      <div class="hero-background-layer" aria-hidden="true"></div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+      <div class="hero-smoke smoke-one" aria-hidden="true"></div>
+      <div class="hero-smoke smoke-two" aria-hidden="true"></div>
+      <canvas class="hero-particles" aria-hidden="true"></canvas>
+      <canvas class="hero-static" aria-hidden="true"></canvas>
+      <div class="hero-scanlines" aria-hidden="true"></div>
+
+      <div class="hero-logo-stage" aria-label="PaulBooth.ai">
+        <div class="hero-logo-glow" aria-hidden="true"></div>
+        <img class="official-logo" src="assets/paulbooth-ai-logo-transparent.png" alt="PaulBooth.ai official biomechanical logo" />
+        <div class="hero-logo-sweep" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero-content">
+        <p class="hero-manifesto">Artificial Intelligence. <span>Biomechanical Design.</span> Digital Evolution.</p>
+      </div>
+
+      <div class="hero-status" aria-hidden="true">
+        <span>ARCHIVE NODE 01</span>
+        <span class="status-line"></span>
+        <span>ONLINE</span>
+      </div>
+    </section>
+
+    <section class="realms section-shell" aria-labelledby="realms-title">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Navigation Matrix</span>
+        <h2 id="realms-title">Explore the Realms</h2>
+      </div>
+      <div id="realm-grid" class="realm-grid"></div>
+    </section>
+
+    <section id="folder-content" class="folder-content section-shell" aria-labelledby="folder-content-title">
+      <div class="section-heading reveal split-heading">
+        <div>
+          <span class="eyebrow">Auto-Loaded Media</span>
+          <h2 id="folder-content-title">Content Repository</h2>
+        </div>
+      </div>
+      <div class="folder-tabs reveal" id="folder-tabs" role="group" aria-label="Content folders"></div>
+      <div class="folder-media-grid" id="folder-media-grid"></div>
+      <p class="folder-empty" id="folder-empty" hidden>No files have been added to this category yet.</p>
+    </section>
+
+    <section id="experiments" class="experiments section-shell" aria-labelledby="experiments-title">
+      <div class="section-heading reveal split-heading">
+        <div>
+          <span class="eyebrow">Active Experiments</span>
+          <h2 id="experiments-title">experiments</h2>
+        </div>
+      </div>
+      <div id="experiment-list" class="experiment-list"></div>
+    </section>
+
+    <section id="visions" class="visions-gallery-section section-shell" aria-labelledby="visions-title">
+      <div class="section-heading reveal split-heading">
+        <div>
+          <span class="eyebrow">Synthetic Visions</span>
+          <h2 id="visions-title">Photo Galleries</h2>
+        </div>
+      </div>
+
+      <div id="visions-gallery-root" class="visions-gallery-root" aria-live="polite"></div>
+      <p id="visions-gallery-empty" class="folder-empty" hidden>No Visions galleries have been added yet.</p>
+    </section>
+
+    <section id="motion" class="motion section-shell">
+      <div class="section-heading reveal split-heading">
+        <div>
+          <span class="eyebrow">Animation &amp; Film</span>
+          <h2>Motion Systems</h2>
+        </div>
+      </div>
+
+      <div id="motion-project-grid" class="motion-project-grid" aria-live="polite"></div>
+      <p id="motion-project-empty" class="folder-empty" hidden>No motion projects have been added yet.</p>
+    </section>
+
+    <section id="machines" class="machines section-shell">
+      <div class="section-heading reveal split-heading">
+        <div>
+          <span class="eyebrow">Systems & Tools</span>
+          <h2>Intelligent Machines</h2>
+        </div>
+      </div>
+      <div id="machine-grid" class="machine-grid"></div>
+    </section>
+
+    <section id="about" class="about section-shell reveal">
+      <div class="about-photo-frame">
+        <img src="assets/paul-booth-photo.jpg" alt="Paul Booth" />
+      </div>
+      <div class="about-copy">
+        <span class="eyebrow">About Paul Booth</span>
+        <h2>Artist. Creator. Explorer.</h2>
+        <p class="lead">From the depths of traditional art to the frontiers of artificial intelligence.</p>
+        <p>Paul Booth is an internationally recognized artist whose work has helped define the visual language of dark surrealism and contemporary tattoo culture. Emerging from New York’s underground art and music scenes in the early 1990s, Booth became renowned for his highly detailed, high-contrast approach to tattooing—an unmistakable style built on atmosphere, anatomical distortion, psychological intensity, and uncompromising technical precision.</p>
+        <p>As the founder of <strong>Last Rites Tattoo Theatre</strong>, Booth created far more than a tattoo studio. He developed an immersive artistic environment where tattooing, fine art, music, sculpture, film, and performance could exist as parts of a single creative world. Over the course of his career, he has worked across oil painting, mixed media, sculpture, filmmaking, production design, and music, while his art has been exhibited internationally and featured in major publications and documentaries. His tattoo clientele has included prominent figures from the worlds of metal, professional wrestling, and alternative culture.</p>
+        <p>Booth’s work is rooted in the darker regions of the human experience—mortality, transformation, fear, control, ritual, identity, and the unconscious. Rather than treating darkness as spectacle, he uses it as a means of investigation. His paintings, films, environments, and tattoo compositions function as psychological landscapes, confronting the forces that shape human behavior and perception.</p>
+        <p>In recent years, Booth has expanded that investigation into <strong>artificial intelligence and emerging technology</strong>. His independent studies focus on generative AI, machine-assisted creativity, human–computer collaboration, intelligent workflow systems, neurotechnology, and the ways computational tools can extend artistic authorship without replacing it. He has applied these studies directly through the design and development of AI-powered platforms, including <strong>InkLord.ai</strong>, a professional operating system for independent tattoo artists, and <strong>ThetaForge</strong>, a neurocognitive audio platform built around self-voice affirmations, hypnagogic states, repetition, and behavioral repatterning.</p>
+        <p>Through this work, Booth is exploring a new frontier where traditional craftsmanship, neuroscience, software, sound, and artificial intelligence intersect. His practice continues to evolve across physical and digital media, but its central purpose remains unchanged: to examine the hidden structures beneath human identity and transform them into immersive, confrontational art.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="signal section-shell reveal">
+      <div>
+        <span class="eyebrow">Transmission Channel</span>
+        <h2>Join the Evolution</h2>
+        <p>Placeholder signup area for updates, releases, exhibits, new systems, and private project announcements.</p>
+      </div>
+      <form class="signal-form">
+        <label class="sr-only" for="email">Email address</label>
+        <input id="email" type="email" placeholder="Enter your email address" />
+        <button type="submit">Subscribe <span>→</span></button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <div class="footer-brand">
+      <span class="mini-brand-mark">PB</span>
+      <div>
+        <strong>PAULBOOTH.AI</strong>
+        <p>Artificial intelligence. Biomechanical design. Digital evolution.</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <div><span>Navigation</span><a href="#experiments">Experiments</a><a href="#visions">Visions</a></div>
+      <div><span>Systems</span><a href="#motion">Motion</a><a href="#machines">Machines</a><a href="#about">About</a></div>
+      <div><span>Connect</span><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> Paul Booth. All rights reserved.</span><span>Terms · Privacy</span></div>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+  <script src="visions-galleries.js"></script>
+  <script src="image-protection.js"></script>
+
+  <script id="hero-logo-hover-sound">
+    (() => {
+      "use strict";
+
+      const stage = document.querySelector(".hero-logo-stage");
+      if (!stage) return;
+
+      const sound = new Audio("assets/audio/Bckgrnd01.mp3");
+      sound.preload = "auto";
+      sound.volume = 0.28;
+
+      let unlocked = false;
+      let lastPlayedAt = 0;
+      const cooldownMs = 1800;
+
+      const unlockAudio = async () => {
+        if (unlocked) return true;
+
+        try {
+          const originalVolume = sound.volume;
+          sound.volume = 0;
+          await sound.play();
+          sound.pause();
+          sound.currentTime = 0;
+          sound.volume = originalVolume;
+          unlocked = true;
+          return true;
+        } catch {
+          sound.volume = 0.28;
+          return false;
+        }
+      };
+
+      const playSound = async ({ force = false } = {}) => {
+        const now = Date.now();
+        if (!force && now - lastPlayedAt < cooldownMs) return;
+
+        if (!unlocked) {
+          const ready = await unlockAudio();
+          if (!ready && !force) return;
+        }
+
+        try {
+          sound.pause();
+          sound.currentTime = 0;
+          sound.volume = 0.28;
+          await sound.play();
+          unlocked = true;
+          lastPlayedAt = now;
+        } catch {
+          /* A browser may require a click or tap before hover audio is allowed. */
+        }
+      };
+
+      stage.addEventListener("mouseenter", () => playSound());
+
+      stage.addEventListener("pointerup", (event) => {
+        if (event.pointerType === "touch" || event.pointerType === "pen") {
+          playSound({ force: true });
+        }
+      });
+
+      stage.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          playSound({ force: true });
+        }
+      });
+
+      stage.tabIndex = 0;
+      stage.setAttribute("role", "button");
+      stage.setAttribute("aria-label", "Play PaulBooth.ai logo sound");
+
+      document.addEventListener("pointerdown", unlockAudio, { once: true, passive: true });
+      document.addEventListener("keydown", unlockAudio, { once: true });
+    })();
+  </script>
+
+</body>
+</html>

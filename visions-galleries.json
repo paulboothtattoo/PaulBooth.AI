@@ -1,0 +1,497 @@
+{
+  "galleries": [
+    {
+      "id": "synthetic-visions-01",
+      "title": "Synthetic Visions-01",
+      "description": "",
+      "hidden": false,
+      "images": [
+        {
+          "src": "content/visual-work/Biomech Dead 17.png",
+          "title": "Biomech Dead 17",
+          "caption": "",
+          "alt": "Biomech Dead 17 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Booth Spiral 04.png",
+          "title": "Booth Spiral 04",
+          "caption": "",
+          "alt": "Booth Spiral 04 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Booth Spiral 08.png",
+          "title": "Booth Spiral 08",
+          "caption": "",
+          "alt": "Booth Spiral 08 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/DarkPixie 01.png",
+          "title": "DarkPixie 01",
+          "caption": "",
+          "alt": "DarkPixie 01 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_cref--_84d6f643-a891-4aaa-add6-6a01951e1e0f.png",
+          "title": "paulbooth.tattoo_cref--_84d6f643-a891-4aaa-add6-6a01951e1e0f",
+          "caption": "",
+          "alt": "paulbooth.tattoo_cref--_84d6f643-a891-4aaa-add6-6a01951e1e0f artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Eyeball Tentacles 26.png",
+          "title": "Eyeball Tentacles 26",
+          "caption": "",
+          "alt": "Eyeball Tentacles 26 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Roots 14.png",
+          "title": "Roots 14",
+          "caption": "",
+          "alt": "Roots 14 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Ponder 01.png",
+          "title": "Ponder 01",
+          "caption": "",
+          "alt": "Ponder 01 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Surrealish 16b copy.png",
+          "title": "Surrealish 16b copy",
+          "caption": "",
+          "alt": "Surrealish 16b copy artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Siamese 35.png",
+          "title": "Siamese 35",
+          "caption": "",
+          "alt": "Siamese 35 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_death_headmoth_flying_ec4c3c36-af2b-4bec-98c3-8ab028915d4c (1) copy.jpg",
+          "title": "paulbooth.tattoo_death_headmoth_flying_ec4c3c36-af2b-4bec-98c3-8ab028915d4c (1) copy",
+          "caption": "",
+          "alt": "paulbooth.tattoo_death_headmoth_flying_ec4c3c36-af2b-4bec-98c3-8ab028915d4c (1) copy artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_stretched_human_skin_sheet_of_canvas_59da7041-63c7-4b96-a6aa-d69c2fd87ea0 (1).png",
+          "title": "paulbooth.tattoo_stretched_human_skin_sheet_of_canvas_59da7041-63c7-4b96-a6aa-d69c2fd87ea0 (1)",
+          "caption": "",
+          "alt": "paulbooth.tattoo_stretched_human_skin_sheet_of_canvas_59da7041-63c7-4b96-a6aa-d69c2fd87ea0 (1) artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Eyeball 19.png",
+          "title": "Eyeball 19",
+          "caption": "",
+          "alt": "Eyeball 19 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_cref--_5a5dd537-254c-4538-8948-6280124b8767.png",
+          "title": "paulbooth.tattoo_cref--_5a5dd537-254c-4538-8948-6280124b8767",
+          "caption": "",
+          "alt": "paulbooth.tattoo_cref--_5a5dd537-254c-4538-8948-6280124b8767 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Leaf Dead 11.png",
+          "title": "Leaf Dead 11",
+          "caption": "",
+          "alt": "Leaf Dead 11 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Kraken Chick 01.png",
+          "title": "Kraken Chick 01",
+          "caption": "",
+          "alt": "Kraken Chick 01 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_nun_three_quarter_vew_372b6d5d-dbfa-4582-a91a-8e2f0e2abdd7.png",
+          "title": "paulbooth.tattoo_nun_three_quarter_vew_372b6d5d-dbfa-4582-a91a-8e2f0e2abdd7",
+          "caption": "",
+          "alt": "paulbooth.tattoo_nun_three_quarter_vew_372b6d5d-dbfa-4582-a91a-8e2f0e2abdd7 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Kraken Skull 08.png",
+          "title": "Kraken Skull 08",
+          "caption": "",
+          "alt": "Kraken Skull 08 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Surrealish 06.png",
+          "title": "Surrealish 06",
+          "caption": "",
+          "alt": "Surrealish 06 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Insectoid 02.png",
+          "title": "Insectoid 02",
+          "caption": "",
+          "alt": "Insectoid 02 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_chinese_FUJIN_blowing_wind_IN_THE_STYLE_OF_PAU_61964616-7426-4c0f-8ea5-4f80c0565bf4.png",
+          "title": "paulbooth.tattoo_chinese_FUJIN_blowing_wind_IN_THE_STYLE_OF_PAU_61964616-7426-4c0f-8ea5-4f80c0565bf4",
+          "caption": "",
+          "alt": "paulbooth.tattoo_chinese_FUJIN_blowing_wind_IN_THE_STYLE_OF_PAU_61964616-7426-4c0f-8ea5-4f80c0565bf4 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_distorted_agonized_faces_in_smoke_floating_82cf5a75-f926-49bd-b652-f34969ecc2cb.png",
+          "title": "paulbooth.tattoo_distorted_agonized_faces_in_smoke_floating_82cf5a75-f926-49bd-b652-f34969ecc2cb",
+          "caption": "",
+          "alt": "paulbooth.tattoo_distorted_agonized_faces_in_smoke_floating_82cf5a75-f926-49bd-b652-f34969ecc2cb artwork",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "synthetic-visions-02",
+      "title": "Synthetic Visions-02",
+      "description": "",
+      "hidden": false,
+      "images": [
+        {
+          "src": "content/visual-work/Booth Spiral 15.png",
+          "title": "Booth Spiral 15",
+          "caption": "",
+          "alt": "Booth Spiral 15 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Booth Spiral 16.png",
+          "title": "Booth Spiral 16",
+          "caption": "",
+          "alt": "Booth Spiral 16 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Booth Spiral 22.png",
+          "title": "Booth Spiral 22",
+          "caption": "",
+          "alt": "Booth Spiral 22 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_close_up_raw_biomechanical_human_skin_in_style_fdea3d63-2ab2-4f11-aabc-de44e967447f.png",
+          "title": "paulbooth.tattoo_close_up_raw_biomechanical_human_skin_in_style_fdea3d63-2ab2-4f11-aabc-de44e967447f",
+          "caption": "",
+          "alt": "paulbooth.tattoo_close_up_raw_biomechanical_human_skin_in_style_fdea3d63-2ab2-4f11-aabc-de44e967447f artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Deemz 08.png",
+          "title": "Deemz 08",
+          "caption": "",
+          "alt": "Deemz 08 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_female_siren_seraphim_wings_autumn_leaves_grow_2d06bc05-ab45-4967-8bd1-11bf70e41284.png",
+          "title": "paulbooth.tattoo_female_siren_seraphim_wings_autumn_leaves_grow_2d06bc05-ab45-4967-8bd1-11bf70e41284",
+          "caption": "",
+          "alt": "paulbooth.tattoo_female_siren_seraphim_wings_autumn_leaves_grow_2d06bc05-ab45-4967-8bd1-11bf70e41284 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_cref--_8deeb9b5-8142-4e9d-bdf5-54e3cd4ab740.png",
+          "title": "paulbooth.tattoo_cref--_8deeb9b5-8142-4e9d-bdf5-54e3cd4ab740",
+          "caption": "",
+          "alt": "paulbooth.tattoo_cref--_8deeb9b5-8142-4e9d-bdf5-54e3cd4ab740 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_hyper_realistic_3-D_creepy_doll_in_a_little_de_3f966964-ad00-4cbf-9fca-89f4d5397039.png",
+          "title": "paulbooth.tattoo_hyper_realistic_3-D_creepy_doll_in_a_little_de_3f966964-ad00-4cbf-9fca-89f4d5397039",
+          "caption": "",
+          "alt": "paulbooth.tattoo_hyper_realistic_3-D_creepy_doll_in_a_little_de_3f966964-ad00-4cbf-9fca-89f4d5397039 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_chinese_FUJIN_blowing_wind_IN_THE_STYLE_OF_PAU_c5e2cc1e-6195-48ae-8589-27d06d44612e.png",
+          "title": "paulbooth.tattoo_chinese_FUJIN_blowing_wind_IN_THE_STYLE_OF_PAU_c5e2cc1e-6195-48ae-8589-27d06d44612e",
+          "caption": "",
+          "alt": "paulbooth.tattoo_chinese_FUJIN_blowing_wind_IN_THE_STYLE_OF_PAU_c5e2cc1e-6195-48ae-8589-27d06d44612e artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Demon 04.webp",
+          "title": "Demon 04",
+          "caption": "",
+          "alt": "Demon 04 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_female_siren_seraphim_wings_autumn_leaves_grow_a20226c4-cd96-41e6-b4d2-e67dcdf65369.png",
+          "title": "paulbooth.tattoo_female_siren_seraphim_wings_autumn_leaves_grow_a20226c4-cd96-41e6-b4d2-e67dcdf65369",
+          "caption": "",
+          "alt": "paulbooth.tattoo_female_siren_seraphim_wings_autumn_leaves_grow_a20226c4-cd96-41e6-b4d2-e67dcdf65369 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Leaf Dead 07.png",
+          "title": "Leaf Dead 07",
+          "caption": "",
+          "alt": "Leaf Dead 07 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_female_siren_seraphim_wings_autumn_leaves_grow_d01e559a-5ef7-4768-986a-03ab91f71845.png",
+          "title": "paulbooth.tattoo_female_siren_seraphim_wings_autumn_leaves_grow_d01e559a-5ef7-4768-986a-03ab91f71845",
+          "caption": "",
+          "alt": "paulbooth.tattoo_female_siren_seraphim_wings_autumn_leaves_grow_d01e559a-5ef7-4768-986a-03ab91f71845 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Grotesque 04.png",
+          "title": "Grotesque 04",
+          "caption": "",
+          "alt": "Grotesque 04 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Siamese 55.png",
+          "title": "Siamese 55",
+          "caption": "",
+          "alt": "Siamese 55 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Grotesque 08.png",
+          "title": "Grotesque 08",
+          "caption": "",
+          "alt": "Grotesque 08 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Old Gasp 05.png",
+          "title": "Old Gasp 05",
+          "caption": "",
+          "alt": "Old Gasp 05 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_human_skin_with_no_hand_7b944560-2737-4d22-a839-07155ae47e23.png",
+          "title": "paulbooth.tattoo_human_skin_with_no_hand_7b944560-2737-4d22-a839-07155ae47e23",
+          "caption": "",
+          "alt": "paulbooth.tattoo_human_skin_with_no_hand_7b944560-2737-4d22-a839-07155ae47e23 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Old Cyborg 02.png",
+          "title": "Old Cyborg 02",
+          "caption": "",
+          "alt": "Old Cyborg 02 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Shrooms 23.png",
+          "title": "Shrooms 23",
+          "caption": "",
+          "alt": "Shrooms 23 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_siren_seraphim_wings_autumn_leaves_growing_out_e3d3e99b-0b43-425f-80fc-f4769f572abb.png",
+          "title": "paulbooth.tattoo_siren_seraphim_wings_autumn_leaves_growing_out_e3d3e99b-0b43-425f-80fc-f4769f572abb",
+          "caption": "",
+          "alt": "paulbooth.tattoo_siren_seraphim_wings_autumn_leaves_growing_out_e3d3e99b-0b43-425f-80fc-f4769f572abb artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Deemz 21.png",
+          "title": "Deemz 21",
+          "caption": "",
+          "alt": "Deemz 21 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_cref--_315bb441-1397-498a-856e-9953a194f394.png",
+          "title": "paulbooth.tattoo_cref--_315bb441-1397-498a-856e-9953a194f394",
+          "caption": "",
+          "alt": "paulbooth.tattoo_cref--_315bb441-1397-498a-856e-9953a194f394 artwork",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "synthetic-visions-03",
+      "title": "Synthetic Visions-03",
+      "description": "",
+      "hidden": false,
+      "images": [
+        {
+          "src": "content/visual-work/Girl 01.jpg",
+          "title": "Girl 01",
+          "caption": "",
+          "alt": "Girl 01 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/CyberLeaf 04.png",
+          "title": "CyberLeaf 04",
+          "caption": "",
+          "alt": "CyberLeaf 04 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/OldLady 01.webp",
+          "title": "OldLady 01",
+          "caption": "",
+          "alt": "OldLady 01 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Medusa 07.jpeg",
+          "title": "Medusa 07",
+          "caption": "",
+          "alt": "Medusa 07 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/EyeSpiral 01.jpg",
+          "title": "EyeSpiral 01",
+          "caption": "",
+          "alt": "EyeSpiral 01 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_cref--_2d12b4f6-06ea-4f89-85cd-67c0c2301a1d.png",
+          "title": "paulbooth.tattoo_cref--_2d12b4f6-06ea-4f89-85cd-67c0c2301a1d",
+          "caption": "",
+          "alt": "paulbooth.tattoo_cref--_2d12b4f6-06ea-4f89-85cd-67c0c2301a1d artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Eyeball 01.png",
+          "title": "Eyeball 01",
+          "caption": "",
+          "alt": "Eyeball 01 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Leaf 23.png",
+          "title": "Leaf 23",
+          "caption": "",
+          "alt": "Leaf 23 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Siamese 10.png",
+          "title": "Siamese 10",
+          "caption": "",
+          "alt": "Siamese 10 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/SkullMoth 04.png",
+          "title": "SkullMoth 04",
+          "caption": "",
+          "alt": "SkullMoth 04 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_cref--_3d288bc2-3260-405e-b026-dfca50d9fa13.png",
+          "title": "paulbooth.tattoo_cref--_3d288bc2-3260-405e-b026-dfca50d9fa13",
+          "caption": "",
+          "alt": "paulbooth.tattoo_cref--_3d288bc2-3260-405e-b026-dfca50d9fa13 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Grotesque 02.png",
+          "title": "Grotesque 02",
+          "caption": "",
+          "alt": "Grotesque 02 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Devil Lettuce 05.webp",
+          "title": "Devil Lettuce 05",
+          "caption": "",
+          "alt": "Devil Lettuce 05 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Old Cyborg 17.png",
+          "title": "Old Cyborg 17",
+          "caption": "",
+          "alt": "Old Cyborg 17 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Shrooms 10.png",
+          "title": "Shrooms 10",
+          "caption": "",
+          "alt": "Shrooms 10 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_angry_biomechanical_woman_showing_teeth_82ba39ca-1086-441e-aec1-380f8428f93b.png",
+          "title": "paulbooth.tattoo_angry_biomechanical_woman_showing_teeth_82ba39ca-1086-441e-aec1-380f8428f93b",
+          "caption": "",
+          "alt": "paulbooth.tattoo_angry_biomechanical_woman_showing_teeth_82ba39ca-1086-441e-aec1-380f8428f93b artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Old Gasp 03.png",
+          "title": "Old Gasp 03",
+          "caption": "",
+          "alt": "Old Gasp 03 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Surrealish 02.png",
+          "title": "Surrealish 02",
+          "caption": "",
+          "alt": "Surrealish 02 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Leaf 20.png",
+          "title": "Leaf 20",
+          "caption": "",
+          "alt": "Leaf 20 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/Tentacles 09.png",
+          "title": "Tentacles 09",
+          "caption": "",
+          "alt": "Tentacles 09 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/paulbooth.tattoo_cref--_0a6a86a8-74f8-4a34-bfb6-45fccbab66b7.png",
+          "title": "paulbooth.tattoo_cref--_0a6a86a8-74f8-4a34-bfb6-45fccbab66b7",
+          "caption": "",
+          "alt": "paulbooth.tattoo_cref--_0a6a86a8-74f8-4a34-bfb6-45fccbab66b7 artwork",
+          "hidden": false
+        },
+        {
+          "src": "content/visual-work/SkullMoth 20.png",
+          "title": "SkullMoth 20",
+          "caption": "",
+          "alt": "SkullMoth 20 artwork",
+          "hidden": false
+        }
+      ]
+    }
+  ]
+}
