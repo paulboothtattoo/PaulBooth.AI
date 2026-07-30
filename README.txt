@@ -1,36 +1,19 @@
-PAULBOOTH.AI — BACKEND-EDITABLE VISIONS GALLERIES + IMAGE DETERRENTS
+PAULBOOTH.AI — HERO SIZE / SKULLS RESTORED
 
-Replace/add these root files:
-- index.html
-- visions-galleries.css
-- visions-galleries.js
-- visions-galleries.json
-- image-protection.css
-- image-protection.js
+Changed:
+- Removed only the oversized hero-background override from the previous package.
+- Restored the original hero-background framing so the skulls are visible again.
+- Preserved the original moving hero-background animation.
+- Kept all 20 orbiting magic orbs, including the added outer-perimeter orbs.
 
-No public editing controls appear on the website.
+Preserved:
+- Newsletter removed
+- Content Repository removed
+- Vault removed
+- Zion Lost and clickable cover
+- Motion Systems and videos
+- Intelligent Machines
+- Synthetic Visions
+- Existing script.js and content.js unchanged
 
-BACKEND GALLERY EDITING
-1. Put image files in content/visions/
-2. Open visions-galleries.json in a text editor.
-3. Edit gallery titles, descriptions, image paths, captions, and order.
-4. Save and refresh the site.
-
-Example image path:
-content/visions/my-image.jpg
-
-To hide a gallery or image:
-"hidden": true
-
-IMAGE PROTECTION
-This package deters casual downloading by:
-- disabling right-click on images
-- disabling image dragging
-- disabling touch-callout/save-image behavior
-- placing a transparent interaction layer over Visions gallery images
-- blocking Ctrl/Cmd+S and Ctrl/Cmd+U
-
-Important: no image displayed in a web browser can be made truly undownloadable.
-A determined user can still obtain it through browser developer tools, network requests,
-screenshots, or cached files. Watermarking and lower-resolution public copies provide
-stronger practical protection.
+Replace all four root files and press Ctrl+F5.

@@ -8,19 +8,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Oxanium:wght@300;400;500;600&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260730-hero-skulls-restored" />
   <link rel="stylesheet" href="visions-galleries.css" />
   <link rel="stylesheet" href="image-protection.css" />
   <style id="realm-centering-fix">
+    .realms {
+      background: #000;
+    }
+
     @media (min-width: 761px) {
       #realm-grid.realm-grid {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        background: #000;
       }
 
       #realm-grid.realm-grid > .realm-card {
         flex: 0 0 calc((100% - 28px) / 3);
+        max-width: calc((100% - 28px) / 3);
       }
     }
   </style>
@@ -66,6 +72,28 @@
 
       <div class="hero-logo-stage" aria-label="PaulBooth.ai">
         <div class="hero-logo-glow" aria-hidden="true"></div>
+        <div class="hero-orb-cluster" aria-hidden="true">
+          <span class="hero-orb orb-one"></span>
+          <span class="hero-orb orb-two"></span>
+          <span class="hero-orb orb-three"></span>
+          <span class="hero-orb orb-four"></span>
+          <span class="hero-orb orb-five"></span>
+          <span class="hero-orb orb-six"></span>
+          <span class="hero-orb orb-seven"></span>
+          <span class="hero-orb orb-eight"></span>
+          <span class="hero-orb orb-nine"></span>
+          <span class="hero-orb orb-ten"></span>
+          <span class="hero-orb orb-eleven"></span>
+          <span class="hero-orb orb-twelve"></span>
+          <span class="hero-orb orb-thirteen"></span>
+          <span class="hero-orb orb-fourteen"></span>
+          <span class="hero-orb orb-fifteen"></span>
+          <span class="hero-orb orb-sixteen"></span>
+          <span class="hero-orb orb-seventeen"></span>
+          <span class="hero-orb orb-eighteen"></span>
+          <span class="hero-orb orb-nineteen"></span>
+          <span class="hero-orb orb-twenty"></span>
+        </div>
         <img class="official-logo" src="assets/paulbooth-ai-logo-transparent.png" alt="PaulBooth.ai official biomechanical logo" />
         <div class="hero-logo-sweep" aria-hidden="true"></div>
       </div>
@@ -88,19 +116,6 @@
       </div>
       <div id="realm-grid" class="realm-grid"></div>
     </section>
-
-    <section id="folder-content" class="folder-content section-shell" aria-labelledby="folder-content-title">
-      <div class="section-heading reveal split-heading">
-        <div>
-          <span class="eyebrow">Auto-Loaded Media</span>
-          <h2 id="folder-content-title">Content Repository</h2>
-        </div>
-      </div>
-      <div class="folder-tabs reveal" id="folder-tabs" role="group" aria-label="Content folders"></div>
-      <div class="folder-media-grid" id="folder-media-grid"></div>
-      <p class="folder-empty" id="folder-empty" hidden>No files have been added to this category yet.</p>
-    </section>
-
     <section id="experiments" class="experiments section-shell" aria-labelledby="experiments-title">
       <div class="section-heading reveal split-heading">
         <div>
@@ -160,19 +175,6 @@
         <p>Through this work, Booth is exploring a new frontier where traditional craftsmanship, neuroscience, software, sound, and artificial intelligence intersect. His practice continues to evolve across physical and digital media, but its central purpose remains unchanged: to examine the hidden structures beneath human identity and transform them into immersive, confrontational art.</p>
       </div>
     </section>
-
-    <section id="contact" class="signal section-shell reveal">
-      <div>
-        <span class="eyebrow">Transmission Channel</span>
-        <h2>Join the Evolution</h2>
-        <p>Placeholder signup area for updates, releases, exhibits, new systems, and private project announcements.</p>
-      </div>
-      <form class="signal-form">
-        <label class="sr-only" for="email">Email address</label>
-        <input id="email" type="email" placeholder="Enter your email address" />
-        <button type="submit">Subscribe <span>→</span></button>
-      </form>
-    </section>
   </main>
 
   <footer class="site-footer section-shell">
@@ -191,8 +193,8 @@
     <div class="footer-bottom"><span>© <span id="year"></span> Paul Booth. All rights reserved.</span><span>Terms · Privacy</span></div>
   </footer>
 
-  <script src="content.js"></script>
-  <script src="script.js"></script>
+  <script src="content.js?v=20260730-safe-realm-cleanup"></script>
+  <script src="script.js?v=20260730-newsletter-removed"></script>
   <script src="visions-galleries.js"></script>
   <script src="image-protection.js"></script>
 

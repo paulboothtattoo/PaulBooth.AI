@@ -404,10 +404,12 @@ window.addEventListener('pointermove', (event) => {
   glow.style.transform = `translate(${event.clientX - 260}px, ${event.clientY - 260}px)`;
 });
 
-document.querySelector('.signal-form').addEventListener('submit', (event) => {
+const signalForm = document.querySelector('.signal-form');
+signalForm?.addEventListener('submit', (event) => {
   event.preventDefault();
   const input = event.currentTarget.querySelector('input');
   const button = event.currentTarget.querySelector('button');
+  if (!input || !button) return;
   if (!input.value.trim()) return input.focus();
   button.innerHTML = 'Signal received <span>✓</span>';
   input.value = '';
