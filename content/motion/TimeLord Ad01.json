@@ -3,5 +3,9 @@
   "description": "Tattoo Artist AI Management software",
   "type": "Intelligent Machine",
   "date": "2026",
-  "status": "Active"
+  "status": "Active",
+  "mediaType": "youtube",
+  "youtubeId": "ukh05weY3cA",
+  "videoOrientation": "vertical",
+  "embedUrl": "https://www.youtube-nocookie.com/embed/ukh05weY3cA"
 }

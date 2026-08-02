@@ -2179,3 +2179,522 @@ video::-webkit-media-controls-enclosure {
     display: none;
   }
 }
+
+
+/* Restored YouTube media cards */
+.folder-media-preview.is-youtube-preview,
+.motion-folder-preview.is-youtube-preview,
+.manifest-machine-preview.is-youtube-preview {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  background: #000 !important;
+}
+
+.pb-youtube-embed {
+  position: relative !important;
+  display: block !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  background: #000 !important;
+}
+
+.pb-youtube-embed.is-landscape {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  margin: 0 !important;
+}
+
+.pb-youtube-embed.is-vertical {
+  width: min(72%, 390px) !important;
+  max-width: 390px !important;
+  aspect-ratio: 9 / 16 !important;
+  margin: 0 auto !important;
+}
+
+.pb-youtube-embed > iframe,
+.pb-youtube-poster {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+  background: #000 !important;
+}
+
+.pb-youtube-poster {
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.pb-youtube-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pb-custom-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 74px;
+  height: 74px;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(179, 140, 81, .88);
+  border-radius: 50%;
+  background: rgba(4, 5, 5, .78);
+  box-shadow: 0 0 34px rgba(93, 32, 29, .42);
+  display: grid;
+  place-items: center;
+}
+
+.pb-custom-play-triangle {
+  width: 0;
+  height: 0;
+  margin-left: 6px;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 17px solid #d6d0c2;
+}
+
+.motion-folder-index,
+.folder-media-type {
+  z-index: 8 !important;
+}
+
+@media (max-width: 760px) {
+  .pb-youtube-embed.is-vertical {
+    width: min(88%, 390px) !important;
+  }
+}
+
+
+/* =====================================================
+   INTELLIGENT MACHINES — YOUTUBE ASPECT-RATIO CORRECTION
+   Keeps every card at its natural content height instead
+   of stretching vertical videos to the tallest grid card.
+   ===================================================== */
+
+#machines .machine-grid {
+  align-items: start !important;
+}
+
+#machines .machine-card.manifest-machine-card {
+  height: auto !important;
+  align-self: start !important;
+  grid-template-rows: max-content max-content max-content max-content max-content !important;
+}
+
+/* Remove the large empty flexible row beneath short video previews. */
+#machines .manifest-machine-card p {
+  min-height: 0 !important;
+}
+
+/* Landscape YouTube videos use the full card width at 16:9. */
+#machines .manifest-machine-preview.is-youtube-preview.is-landscape-preview {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  display: block !important;
+  overflow: hidden !important;
+  background: #000 !important;
+}
+
+#machines .manifest-machine-preview.is-landscape-preview .pb-youtube-embed {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  margin: 0 !important;
+}
+
+/* Portrait YouTube videos remain true 9:16 and do not create a huge black panel. */
+#machines .manifest-machine-preview.is-youtube-preview.is-vertical-preview {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  display: grid !important;
+  place-items: center !important;
+  overflow: hidden !important;
+  padding: 24px 0 !important;
+  background: #000 !important;
+}
+
+#machines .manifest-machine-preview.is-vertical-preview .pb-youtube-embed {
+  width: min(58%, 390px) !important;
+  max-width: 390px !important;
+  height: auto !important;
+  aspect-ratio: 9 / 16 !important;
+  margin: 0 auto !important;
+}
+
+/* Poster and iframe always fill the correctly proportioned wrapper. */
+#machines .pb-youtube-embed > .pb-youtube-poster,
+#machines .pb-youtube-embed > iframe {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Keep YouTube thumbnails complete instead of cropping their edges. */
+#machines .pb-youtube-poster img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #000 !important;
+}
+
+@media (max-width: 900px) {
+  #machines .manifest-machine-preview.is-vertical-preview .pb-youtube-embed {
+    width: min(70%, 390px) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  #machines .manifest-machine-preview.is-youtube-preview.is-vertical-preview {
+    padding: 16px 0 !important;
+  }
+
+  #machines .manifest-machine-preview.is-vertical-preview .pb-youtube-embed {
+    width: min(86%, 390px) !important;
+  }
+}
+
+
+/* =====================================================
+   FINAL YOUTUBE PLAYER CORRECTION
+   Uses YouTube's own player/thumbnail and enlarges videos.
+   ===================================================== */
+
+#machines .machine-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-items: start !important;
+  gap: 24px !important;
+}
+
+#machines .machine-card.manifest-machine-card {
+  height: auto !important;
+  min-height: 0 !important;
+  align-self: start !important;
+  overflow: hidden !important;
+}
+
+#machines .manifest-machine-preview.is-youtube-preview {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  display: block !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: #000 !important;
+}
+
+/* Full-width cinematic players. */
+#machines .manifest-machine-preview.is-landscape-preview .pb-youtube-embed,
+#machines .pb-youtube-embed.is-landscape {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: #000 !important;
+}
+
+/* Portrait films are substantially larger, centered, and remain true 9:16. */
+#machines .manifest-machine-preview.is-vertical-preview {
+  display: grid !important;
+  place-items: center !important;
+  padding: 20px 0 !important;
+}
+
+#machines .manifest-machine-preview.is-vertical-preview .pb-youtube-embed,
+#machines .pb-youtube-embed.is-vertical {
+  position: relative !important;
+  display: block !important;
+  width: min(86%, 520px) !important;
+  max-width: 520px !important;
+  height: auto !important;
+  aspect-ratio: 9 / 16 !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  background: #000 !important;
+}
+
+/* The native YouTube iframe fills the exact player ratio. */
+#machines .pb-youtube-embed > iframe {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: none !important;
+  border: 0 !important;
+  background: #000 !important;
+}
+
+
+@media (max-width: 900px) {
+  #machines .machine-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  #machines .manifest-machine-preview.is-vertical-preview .pb-youtube-embed,
+  #machines .pb-youtube-embed.is-vertical {
+    width: min(78%, 520px) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  #machines .manifest-machine-preview.is-vertical-preview {
+    padding: 14px 0 !important;
+  }
+
+  #machines .manifest-machine-preview.is-vertical-preview .pb-youtube-embed,
+  #machines .pb-youtube-embed.is-vertical {
+    width: min(92%, 520px) !important;
+  }
+}
+
+
+/* =====================================================
+   RESTORED CUSTOM YOUTUBE OVERLAYS
+   Hides YouTube chrome until the visitor clicks Play.
+   ===================================================== */
+
+.pb-youtube-poster {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  background: #000 !important;
+}
+
+.pb-youtube-poster img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-position: center !important;
+  background: #000 !important;
+}
+
+/* Landscape thumbnails fill the 16:9 frame. */
+.pb-youtube-embed.is-landscape .pb-youtube-poster img {
+  object-fit: cover !important;
+}
+
+/* Portrait videos keep the complete YouTube thumbnail visible. */
+.pb-youtube-embed.is-vertical .pb-youtube-poster img {
+  object-fit: contain !important;
+}
+
+.pb-youtube-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 20%, rgba(0, 0, 0, .18) 55%, rgba(0, 0, 0, .72) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, .10), rgba(0, 0, 0, .38));
+}
+
+.pb-youtube-brand {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  z-index: 4;
+  color: rgba(214, 208, 194, .78);
+  font-family: "Oxanium", sans-serif;
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  pointer-events: none;
+  text-shadow: 0 2px 8px #000;
+}
+
+.pb-custom-play {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  z-index: 5 !important;
+  display: grid !important;
+  place-items: center !important;
+  width: 78px !important;
+  height: 78px !important;
+  transform: translate(-50%, -50%) !important;
+  border: 1px solid rgba(179, 140, 81, .90) !important;
+  border-radius: 50% !important;
+  background: rgba(4, 5, 5, .80) !important;
+  box-shadow:
+    inset 0 0 18px rgba(179, 140, 81, .08),
+    0 0 34px rgba(93, 32, 29, .42) !important;
+  pointer-events: none !important;
+}
+
+.pb-custom-play-triangle {
+  width: 0 !important;
+  height: 0 !important;
+  margin-left: 6px !important;
+  border-top: 12px solid transparent !important;
+  border-bottom: 12px solid transparent !important;
+  border-left: 19px solid #d6d0c2 !important;
+}
+
+.pb-youtube-poster:hover .pb-custom-play,
+.pb-youtube-poster:focus-visible .pb-custom-play {
+  border-color: #d0a268 !important;
+  box-shadow:
+    inset 0 0 22px rgba(179, 140, 81, .12),
+    0 0 42px rgba(126, 42, 35, .54) !important;
+  transform: translate(-50%, -50%) scale(1.05) !important;
+}
+
+.pb-youtube-poster:focus-visible {
+  outline: 1px solid #b38c51 !important;
+  outline-offset: -2px !important;
+}
+
+
+/* =====================================================
+   PAULBOOTH.AI ONLY — FINAL PORTRAIT OVERLAY FIX
+   This block is intentionally last and overrides all
+   earlier YouTube sizing so vertical posters/players
+   are handled as true 9:16 media on both Motion and
+   Intelligent Machines.
+   ===================================================== */
+
+/* 1) The OUTER preview owns the portrait ratio. */
+#motion-project-grid .motion-folder-preview.is-youtube-preview.is-vertical-preview,
+#machine-grid .manifest-machine-preview.is-youtube-preview.is-vertical-preview,
+#folder-media-grid .folder-media-preview.is-youtube-preview.is-vertical-preview {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: 9 / 16 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: #000 !important;
+}
+
+/* 2) The YouTube wrapper fills that exact portrait frame. */
+#motion-project-grid .motion-folder-preview.is-youtube-preview.is-vertical-preview > .pb-youtube-embed.is-vertical,
+#machine-grid .manifest-machine-preview.is-youtube-preview.is-vertical-preview > .pb-youtube-embed.is-vertical,
+#folder-media-grid .folder-media-preview.is-youtube-preview.is-vertical-preview > .pb-youtube-embed.is-vertical {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: #000 !important;
+}
+
+/* 3) Poster overlay and iframe fill the wrapper exactly. */
+#motion-project-grid .is-vertical-preview .pb-youtube-poster,
+#machine-grid .is-vertical-preview .pb-youtube-poster,
+#folder-media-grid .is-vertical-preview .pb-youtube-poster,
+#motion-project-grid .is-vertical-preview .pb-youtube-embed > iframe,
+#machine-grid .is-vertical-preview .pb-youtube-embed > iframe,
+#folder-media-grid .is-vertical-preview .pb-youtube-embed > iframe {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+/* 4) YouTube usually serves a landscape thumbnail even for Shorts.
+      Cover the portrait frame so the still overlay reads as 9:16,
+      instead of a tiny horizontal image floating in a black box. */
+#motion-project-grid .is-vertical-preview .pb-youtube-poster img,
+#machine-grid .is-vertical-preview .pb-youtube-poster img,
+#folder-media-grid .is-vertical-preview .pb-youtube-poster img {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  transform: none !important;
+  background: #000 !important;
+}
+
+/* 5) Vertical cards should hug content, not stretch into huge empty boxes. */
+#motion-project-grid .motion-folder-card.is-vertical-card,
+#machine-grid .machine-card.is-vertical-card {
+  height: auto !important;
+  min-height: 0 !important;
+  align-self: start !important;
+}
+
+/* 6) Keep landscape players untouched and correctly wide. */
+#motion-project-grid .motion-folder-preview.is-youtube-preview.is-landscape-preview,
+#machine-grid .manifest-machine-preview.is-youtube-preview.is-landscape-preview,
+#folder-media-grid .folder-media-preview.is-youtube-preview.is-landscape-preview {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: #000 !important;
+}
+
+#motion-project-grid .motion-folder-preview.is-youtube-preview.is-landscape-preview > .pb-youtube-embed.is-landscape,
+#machine-grid .manifest-machine-preview.is-youtube-preview.is-landscape-preview > .pb-youtube-embed.is-landscape,
+#folder-media-grid .folder-media-preview.is-youtube-preview.is-landscape-preview > .pb-youtube-embed.is-landscape {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  aspect-ratio: auto !important;
+  margin: 0 !important;
+}

@@ -22,13 +22,60 @@ const humanize = (name) =>
   name.replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim()
       .replace(/\b\w/g, (letter) => letter.toUpperCase());
 
+const slugify = (value) =>
+  String(value).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 const items = [];
 
 for (const [slug, label] of Object.entries(categories)) {
   const directory = path.join(root, slug);
   if (!fs.existsSync(directory)) continue;
 
-  for (const filename of fs.readdirSync(directory)) {
+  const filenames = fs.readdirSync(directory);
+  const youtubeBases = new Set();
+
+  // First create YouTube records directly from JSON metadata.
+  for (const filename of filenames) {
+    if (!filename.toLowerCase().endsWith(".json") || filename === "example-project.json") continue;
+
+    const fullPath = path.join(directory, filename);
+    let metadata = {};
+    try {
+      metadata = JSON.parse(fs.readFileSync(fullPath, "utf8"));
+    } catch {
+      console.warn(`Invalid JSON ignored: ${fullPath}`);
+      continue;
+    }
+
+    if (!metadata.youtubeId && metadata.mediaType !== "youtube") continue;
+
+    const base = path.basename(filename, ".json");
+    youtubeBases.add(base.toLowerCase());
+
+    items.push({
+      id: metadata.id || `${slug}-${slugify(base)}`,
+      category: slug,
+      categoryLabel: metadata.categoryLabel || label,
+      title: metadata.title || humanize(base),
+      description: metadata.description || "",
+      type: metadata.type || label,
+      status: metadata.status || "",
+      date: metadata.date || "",
+      link: metadata.link || "",
+      mediaType: "youtube",
+      src: "",
+      filename: "",
+      youtubeId: metadata.youtubeId || "",
+      videoOrientation: metadata.videoOrientation === "vertical" ? "vertical" : "landscape",
+      embedUrl: metadata.embedUrl || `https://www.youtube-nocookie.com/embed/${metadata.youtubeId || ""}`,
+      poster: metadata.poster || "",
+      posterFallback: metadata.posterFallback || "",
+      modified: fs.statSync(fullPath).mtimeMs,
+    });
+  }
+
+  // Then add ordinary files, skipping deleted/replaced MP4 counterparts.
+  for (const filename of filenames) {
     if (filename.startsWith(".") || filename === "README.txt") continue;
 
     const fullPath = path.join(directory, filename);
@@ -38,19 +85,21 @@ for (const [slug, label] of Object.entries(categories)) {
     if (!extensions[extension]) continue;
 
     const base = path.basename(filename, path.extname(filename));
+    if (youtubeBases.has(base.toLowerCase()) && extensions[extension] === "video") continue;
+
     const metadataPath = path.join(directory, `${base}.json`);
     let metadata = {};
 
     if (fs.existsSync(metadataPath)) {
       try {
         metadata = JSON.parse(fs.readFileSync(metadataPath, "utf8"));
-      } catch (error) {
+      } catch {
         console.warn(`Invalid JSON ignored: ${metadataPath}`);
       }
     }
 
     items.push({
-      id: `${slug}-${base.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+      id: `${slug}-${slugify(base)}`,
       category: slug,
       categoryLabel: label,
       title: metadata.title || humanize(base),
@@ -69,14 +118,9 @@ for (const [slug, label] of Object.entries(categories)) {
 
 items.sort((a, b) => b.modified - a.modified);
 
-const output = {
-  generatedAt: new Date().toISOString(),
-  items,
-};
-
 fs.writeFileSync(
   path.join(__dirname, "content-manifest.json"),
-  JSON.stringify(output, null, 2)
+  JSON.stringify({ generatedAt: new Date().toISOString(), items }, null, 2)
 );
 
 console.log(`Generated content-manifest.json with ${items.length} item(s).`);

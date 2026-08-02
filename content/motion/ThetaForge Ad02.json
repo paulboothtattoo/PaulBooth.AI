@@ -1,7 +1,11 @@
 {
-  "title": "ThetaForge",
+  "title": "ThetaForge Ad 02",
   "description": "A Self Help App to retrain your brain.",
   "type": "Intelligent Machine",
   "date": "2026",
-  "status": "Active"
+  "status": "Active",
+  "mediaType": "youtube",
+  "youtubeId": "ejvZ1E4X0TI",
+  "videoOrientation": "vertical",
+  "embedUrl": "https://www.youtube-nocookie.com/embed/ejvZ1E4X0TI"
 }

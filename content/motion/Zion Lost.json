@@ -4,5 +4,9 @@
   "type": "Band / Music / Film",
   "date": "2026",
   "status": "Active",
-  "link": "projects/babylon-black/index.html"
+  "link": "projects/babylon-black/index.html",
+  "mediaType": "youtube",
+  "youtubeId": "qazeawsKeQE",
+  "videoOrientation": "landscape",
+  "embedUrl": "https://www.youtube-nocookie.com/embed/qazeawsKeQE"
 }

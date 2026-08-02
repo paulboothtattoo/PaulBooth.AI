@@ -1,0 +1,17 @@
+{
+  "name": "PaulBooth.ai \u2014 The Machine Archive",
+  "short_name": "PaulBooth.ai",
+  "description": "AI art, biomechanical design, motion, music, research, and experimental digital work by Paul Booth.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "/assets/paulbooth-ai-logo-transparent.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

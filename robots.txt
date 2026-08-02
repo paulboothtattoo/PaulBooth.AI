@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /indexOLD.html
+Disallow: /projects/babylon-black/indexOLD.html
+
+Sitemap: https://paulbooth.ai/sitemap.xml

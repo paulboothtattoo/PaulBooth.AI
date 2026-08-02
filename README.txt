@@ -1,19 +1,12 @@
-PAULBOOTH.AI — HERO SIZE / SKULLS RESTORED
+PAULBOOTH.AI — YOUTUBE RESTORE PATCH
 
-Changed:
-- Removed only the oversized hero-background override from the previous package.
-- Restored the original hero-background framing so the skulls are visible again.
-- Preserved the original moving hero-background animation.
-- Kept all 20 orbiting magic orbs, including the added outer-perimeter orbs.
+This smaller ZIP contains only the files required to restore the YouTube players.
 
-Preserved:
-- Newsletter removed
-- Content Repository removed
-- Vault removed
-- Zion Lost and clickable cover
-- Motion Systems and videos
-- Intelligent Machines
-- Synthetic Visions
-- Existing script.js and content.js unchanged
+Copy everything in this ZIP into the root of your current PaulBooth.ai site folder and allow Windows to replace matching files.
 
-Replace all four root files and press Ctrl+F5.
+It does NOT include your large media folders, images, galleries, or project assets, so it downloads quickly and does not overwrite them.
+
+After copying:
+1. Restart the Python server.
+2. Open http://localhost:8080
+3. Press Ctrl+F5.

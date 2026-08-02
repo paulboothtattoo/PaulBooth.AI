@@ -26,7 +26,10 @@
     mediaType: String(item.mediaType || "").toLowerCase(),
     title: item.title || item.filename || "Untitled",
     src: item.src || "",
-    type: item.type || item.categoryLabel || "Motion"
+    type: item.type || item.categoryLabel || "Motion",
+    videoOrientation: String(item.videoOrientation || "landscape").toLowerCase() === "vertical"
+      ? "vertical"
+      : "landscape"
   });
 
   const fetchManifestItems = async () => {
@@ -50,7 +53,7 @@
 
     return payload.items
       .map(normalizeItem)
-      .filter((item) => item.src);
+      .filter((item) => item.src || item.youtubeId || item.embedUrl);
   };
 
   const videoMarkup = (item) => {
@@ -62,13 +65,91 @@
     </video>`;
   };
 
+  const youtubeMarkup = (item) => {
+    const videoId = escapeHtml(item.youtubeId || "");
+    const orientationClass = item.videoOrientation === "vertical" ? " is-vertical" : " is-landscape";
+    const title = escapeHtml(item.title || "Embedded video");
+    const poster = escapeHtml(
+      item.poster || `https://i.ytimg.com/vi/${item.youtubeId || ""}/maxresdefault.jpg`
+    );
+    const posterFallback = escapeHtml(
+      item.posterFallback || `https://i.ytimg.com/vi/${item.youtubeId || ""}/hqdefault.jpg`
+    );
+
+    return `<div class="pb-youtube-embed${orientationClass}">
+      <button
+        class="pb-youtube-poster"
+        type="button"
+        data-youtube-id="${videoId}"
+        data-youtube-title="${title}"
+        aria-label="Play ${title}">
+        <img
+          src="${poster}"
+          data-poster-fallback="${posterFallback}"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          draggable="false">
+        <span class="pb-youtube-shade" aria-hidden="true"></span>
+        <span class="pb-youtube-brand" aria-hidden="true">PAULBOOTH.AI</span>
+        <span class="pb-custom-play" aria-hidden="true">
+          <span class="pb-custom-play-triangle"></span>
+        </span>
+      </button>
+    </div>`;
+  };
+
+
+
+  const activateYoutubePoster = (posterButton) => {
+    if (!(posterButton instanceof HTMLButtonElement)) return;
+
+    const videoId = posterButton.dataset.youtubeId || "";
+    const title = posterButton.dataset.youtubeTitle || "Embedded video";
+    const wrapper = posterButton.closest(".pb-youtube-embed");
+
+    if (!videoId || !wrapper || wrapper.classList.contains("is-playing")) return;
+
+    wrapper.classList.add("is-playing");
+
+    const iframe = document.createElement("iframe");
+    iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?rel=0&playsinline=1&autoplay=1`;
+    iframe.title = title;
+    iframe.loading = "eager";
+    iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.allowFullscreen = true;
+
+    posterButton.replaceWith(iframe);
+  };
+
+  document.addEventListener("click", (event) => {
+    const posterButton = event.target.closest(".pb-youtube-poster");
+    if (posterButton) activateYoutubePoster(posterButton);
+  });
+
+  document.addEventListener("error", (event) => {
+    const image = event.target;
+    if (!(image instanceof HTMLImageElement)) return;
+    if (!image.closest(".pb-youtube-poster")) return;
+
+    const fallback = image.dataset.posterFallback || "";
+    if (!fallback || image.dataset.posterFallbackUsed === "true") return;
+
+    image.dataset.posterFallbackUsed = "true";
+    image.src = fallback;
+  }, true);
+
+
   const installMachineStyles = () => {
     if (document.querySelector("#manifest-machine-styles")) return;
     const style = document.createElement("style");
     style.id = "manifest-machine-styles";
     style.textContent = `
       .manifest-machine-card { display:flex; flex-direction:column; overflow:hidden; }
-      .manifest-machine-preview { aspect-ratio:16/9; background:#000; border-bottom:1px solid rgba(169,119,67,.28); }
+      .manifest-machine-preview { background:#000; border-bottom:1px solid rgba(169,119,67,.28); }
+      .manifest-machine-preview:not(.is-youtube-preview) { aspect-ratio:16/9; }
+      .manifest-machine-preview.is-youtube-preview { aspect-ratio:auto; height:auto; min-height:0; overflow:visible; display:block; }
       .manifest-machine-preview video { display:block; width:100%; height:100%; object-fit:contain; background:#000; }
       .manifest-machine-card .machine-index { margin-bottom:14px; }
     `;
@@ -173,17 +254,25 @@
     if (!grid || !empty) return;
 
     const motionItems = items.filter(
-      (item) => item.category === "motion" && item.mediaType === "video"
+      (item) => item.category === "motion" && (item.mediaType === "video" || item.mediaType === "youtube")
     );
 
     grid.innerHTML = motionItems.map((item, index) => {
-      const directLink = escapeHtml(item.link || item.src);
-      const actionLabel = item.link ? "Open project" : "Open video";
+      const directLink = item.link ? escapeHtml(item.link) : "";
+      const actionLabel = item.link ? "Open project" : "";
 
-      return `<article class="motion-folder-card reveal visible">
-        <div class="motion-folder-preview">
+      const orientation = item.videoOrientation === "vertical" ? "vertical" : "landscape";
+      const mediaClasses = item.mediaType === "youtube"
+        ? ` is-youtube-card is-${orientation}-card`
+        : "";
+      const previewClasses = item.mediaType === "youtube"
+        ? ` is-youtube-preview is-${orientation}-preview`
+        : "";
+
+      return `<article class="motion-folder-card reveal visible${mediaClasses}">
+        <div class="motion-folder-preview${previewClasses}">
           <span class="motion-folder-index">${String(index + 1).padStart(2, "0")}</span>
-          ${videoMarkup(item)}
+          ${item.mediaType === "youtube" ? youtubeMarkup(item) : videoMarkup(item)}
         </div>
         <div class="motion-folder-copy">
           <span class="eyebrow">${escapeHtml(item.type)}</span>
@@ -193,7 +282,7 @@
             ${item.date ? `<span>${escapeHtml(item.date)}</span>` : ""}
             ${item.status ? `<span>${escapeHtml(item.status)}</span>` : ""}
           </div>` : ""}
-          <a class="text-link" href="${directLink}" target="${item.link ? "_self" : "_blank"}" rel="noopener">${actionLabel} <span>→</span></a>
+          ${directLink ? `<a class="text-link" href="${directLink}" target="_self" rel="noopener">${actionLabel} <span>→</span></a>` : ""}
         </div>
       </article>`;
     }).join("");
@@ -207,25 +296,33 @@
     const machineItems = items.filter((item) => item.category === "machines");
 
     grid.innerHTML = machineItems.map((item, index) => {
-      const directLink = escapeHtml(item.link || item.src);
-      const actionLabel = item.link ? "Open project" : (
-        item.mediaType === "video" ? "Open video" : "Open file"
-      );
+      const directLink = item.link ? escapeHtml(item.link) : "";
+      const actionLabel = item.link ? "Open project" : "";
 
-      const preview = item.mediaType === "video"
-        ? videoMarkup(item)
-        : item.mediaType === "image"
+      const preview = item.mediaType === "youtube"
+        ? youtubeMarkup(item)
+        : item.mediaType === "video"
+          ? videoMarkup(item)
+          : item.mediaType === "image"
           ? `<img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.title)}" loading="lazy">`
           : `<div class="folder-document">${escapeHtml((item.mediaType || "file").toUpperCase())}</div>`;
 
-      return `<article class="machine-card manifest-machine-card reveal visible">
-        <div class="manifest-machine-preview">
+      const orientation = item.videoOrientation === "vertical" ? "vertical" : "landscape";
+      const mediaClasses = item.mediaType === "youtube"
+        ? ` is-youtube-card is-${orientation}-card`
+        : "";
+      const previewClasses = item.mediaType === "youtube"
+        ? ` is-youtube-preview is-${orientation}-preview`
+        : "";
+
+      return `<article class="machine-card manifest-machine-card reveal visible${mediaClasses}">
+        <div class="manifest-machine-preview${previewClasses}">
           ${preview}
         </div>
         <span class="machine-index">${String(index + 1).padStart(2, "0")}</span>
         <h3>${escapeHtml(item.title)}</h3>
         ${item.description ? `<p>${escapeHtml(item.description)}</p>` : ""}
-        <a href="${directLink}" target="${item.link ? "_self" : "_blank"}" rel="noopener">${actionLabel} <span>→</span></a>
+        ${directLink ? `<a href="${directLink}" target="_self" rel="noopener">${actionLabel} <span>→</span></a>` : ""}
       </article>`;
     }).join("");
   };
@@ -254,6 +351,7 @@
       if (item.mediaType === "image") {
         return `<img src="${src}" alt="${title}" loading="lazy" draggable="false" oncontextmenu="return false;">`;
       }
+      if (item.mediaType === "youtube") return youtubeMarkup(item);
       if (item.mediaType === "video") return videoMarkup(item);
       if (item.mediaType === "audio") {
         return `<audio src="${src}" controls preload="metadata"></audio>`;
@@ -272,8 +370,16 @@
           ? `<a href="${directLink}" target="_self" rel="noopener">Visit Project →</a>`
           : "";
 
-        return `<article class="folder-media-card reveal visible">
-          <div class="folder-media-preview" oncontextmenu="return false;">
+        const orientation = item.videoOrientation === "vertical" ? "vertical" : "landscape";
+        const mediaClasses = item.mediaType === "youtube"
+          ? ` is-youtube-card is-${orientation}-card`
+          : "";
+        const previewClasses = item.mediaType === "youtube"
+          ? ` is-youtube-preview is-${orientation}-preview`
+          : "";
+
+        return `<article class="folder-media-card reveal visible${mediaClasses}">
+          <div class="folder-media-preview${previewClasses}" oncontextmenu="return false;">
             <span class="folder-media-type">${escapeHtml(item.mediaType)}</span>
             ${previewMarkup(item)}
           </div>
