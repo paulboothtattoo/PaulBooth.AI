@@ -2514,3 +2514,62 @@ video::-webkit-media-controls-enclosure {
     margin: 0 auto !important;
   }
 }
+
+/* =========================================
+   PORTRAIT YOUTUBE CARD BALANCE — AUTHORITATIVE
+   Shrinks the complete vertical card, not only the iframe.
+   Horizontal video cards remain unchanged.
+   ========================================= */
+@media (min-width: 761px) {
+  #motion-project-grid > .motion-folder-card.is-youtube-card.is-vertical-card,
+  #folder-media-grid > .folder-media-card.is-youtube-card.is-vertical-card,
+  #machine-grid > .machine-card.is-youtube-card.is-vertical-card {
+    width: min(100%, 340px) !important;
+    max-width: 340px !important;
+    justify-self: center !important;
+    align-self: start !important;
+  }
+
+  #motion-project-grid > .motion-folder-card.is-vertical-card .motion-folder-preview.is-vertical-preview,
+  #folder-media-grid > .folder-media-card.is-vertical-card .folder-media-preview.is-vertical-preview,
+  #machine-grid > .machine-card.is-vertical-card .manifest-machine-preview.is-vertical-preview {
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    display: grid !important;
+    place-items: center !important;
+    padding: 18px 0 !important;
+    overflow: hidden !important;
+    background: #000 !important;
+  }
+
+  #motion-project-grid > .motion-folder-card.is-vertical-card .pb-youtube-embed.is-vertical,
+  #folder-media-grid > .folder-media-card.is-vertical-card .pb-youtube-embed.is-vertical,
+  #machine-grid > .machine-card.is-vertical-card .pb-youtube-embed.is-vertical {
+    width: 180px !important;
+    max-width: 180px !important;
+    height: auto !important;
+    aspect-ratio: 9 / 16 !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 760px) {
+  #motion-project-grid > .motion-folder-card.is-youtube-card.is-vertical-card,
+  #folder-media-grid > .folder-media-card.is-youtube-card.is-vertical-card,
+  #machine-grid > .machine-card.is-youtube-card.is-vertical-card {
+    width: min(100%, 340px) !important;
+    max-width: 340px !important;
+    justify-self: center !important;
+  }
+
+  #motion-project-grid > .motion-folder-card.is-vertical-card .pb-youtube-embed.is-vertical,
+  #folder-media-grid > .folder-media-card.is-vertical-card .pb-youtube-embed.is-vertical,
+  #machine-grid > .machine-card.is-vertical-card .pb-youtube-embed.is-vertical {
+    width: min(58vw, 190px) !important;
+    max-width: 190px !important;
+    aspect-ratio: 9 / 16 !important;
+    margin: 16px auto !important;
+  }
+}
+
