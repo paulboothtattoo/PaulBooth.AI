@@ -83,7 +83,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Oxanium:wght@300;400;500;600&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260802-larger-scrolling-header" />
+  <link rel="stylesheet" href="styles.css?v=20260803-vertical-videos-slightly-larger" />
   <link rel="stylesheet" href="visions-galleries.css" />
   <link rel="stylesheet" href="image-protection.css" />
   <style id="realm-centering-fix">
@@ -298,6 +298,53 @@
 
     .mobile-panel {
       position: absolute !important;
+    }
+
+
+
+    /* =========================================================
+       VERTICAL VIDEO SIZE — SLIGHTLY LARGER
+       Keeps portrait videos compact, but increases them from the
+       current reduced size without returning to the earlier scale.
+       ========================================================= */
+    @media (min-width: 761px) {
+      #motion-project-grid > .motion-folder-card.is-vertical-card,
+      #folder-media-grid > .folder-media-card.is-vertical-card,
+      #machine-grid > .machine-card.is-vertical-card {
+        width: min(100%, 380px) !important;
+        max-width: 380px !important;
+        justify-self: center !important;
+      }
+
+      #motion-project-grid .is-vertical-card .pb-youtube-embed.is-vertical,
+      #folder-media-grid .is-vertical-card .pb-youtube-embed.is-vertical,
+      #machine-grid .is-vertical-card .pb-youtube-embed.is-vertical {
+        width: 220px !important;
+        max-width: 220px !important;
+        height: auto !important;
+        aspect-ratio: 9 / 16 !important;
+        margin: 0 auto !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      #motion-project-grid > .motion-folder-card.is-vertical-card,
+      #folder-media-grid > .folder-media-card.is-vertical-card,
+      #machine-grid > .machine-card.is-vertical-card {
+        width: min(100%, 360px) !important;
+        max-width: 360px !important;
+        justify-self: center !important;
+      }
+
+      #motion-project-grid .is-vertical-card .pb-youtube-embed.is-vertical,
+      #folder-media-grid .is-vertical-card .pb-youtube-embed.is-vertical,
+      #machine-grid .is-vertical-card .pb-youtube-embed.is-vertical {
+        width: min(64vw, 205px) !important;
+        max-width: 205px !important;
+        height: auto !important;
+        aspect-ratio: 9 / 16 !important;
+        margin: 16px auto !important;
+      }
     }
 
   </style>
