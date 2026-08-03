@@ -83,7 +83,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Oxanium:wght@300;400;500;600&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260730-pa-bt-ai-vertical-overlay-fix" />
+  <link rel="stylesheet" href="styles.css?v=20260802-larger-header" />
   <link rel="stylesheet" href="visions-galleries.css" />
   <link rel="stylesheet" href="image-protection.css" />
   <style id="realm-centering-fix">
@@ -169,6 +169,117 @@
 
     @media (max-width: 980px) {
       .sister-site-actions { display: none; }
+    }
+
+
+
+    /* =========================================================
+       PAULBOOTH.AI — LARGER HEADER TEXT + BUTTONS
+       Matches the stronger scale used across the sister sites.
+       ========================================================= */
+    @media (min-width: 1181px) {
+      .site-header {
+        min-height: 96px !important;
+        height: 96px !important;
+        padding: 0 34px !important;
+        gap: 30px !important;
+      }
+
+      .mini-brand {
+        gap: 16px !important;
+        font-size: 16px !important;
+        letter-spacing: .17em !important;
+      }
+
+      .mini-brand-mark {
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 14px !important;
+      }
+
+      .desktop-nav {
+        gap: clamp(24px, 2.4vw, 42px) !important;
+      }
+
+      .desktop-nav a {
+        font-size: 14px !important;
+        letter-spacing: .17em !important;
+        line-height: 1.2 !important;
+      }
+
+      .sister-site-actions {
+        gap: 14px !important;
+      }
+
+      .sister-site-button {
+        min-height: 52px !important;
+        padding: 0 24px !important;
+        font-size: 12px !important;
+        letter-spacing: .13em !important;
+        line-height: 1 !important;
+      }
+    }
+
+    @media (max-width: 1180px) and (min-width: 981px) {
+      .site-header {
+        min-height: 86px !important;
+        height: 86px !important;
+        padding: 0 24px !important;
+      }
+
+      .mini-brand {
+        font-size: 14px !important;
+      }
+
+      .mini-brand-mark {
+        width: 44px !important;
+        height: 44px !important;
+      }
+
+      .desktop-nav {
+        gap: 18px !important;
+      }
+
+      .desktop-nav a {
+        font-size: 12px !important;
+      }
+
+      .sister-site-button {
+        min-height: 46px !important;
+        padding: 0 18px !important;
+        font-size: 10px !important;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .site-header {
+        min-height: 78px !important;
+        height: 78px !important;
+        padding: 0 18px !important;
+      }
+
+      .mini-brand {
+        font-size: 13px !important;
+      }
+
+      .mini-brand-mark {
+        width: 42px !important;
+        height: 42px !important;
+      }
+
+      .menu-button {
+        width: 48px !important;
+        height: 48px !important;
+      }
+
+      .mobile-panel {
+        top: 78px !important;
+      }
+
+      .mobile-panel a {
+        font-size: 13px !important;
+        padding: 17px 14px !important;
+      }
     }
 
   </style>
