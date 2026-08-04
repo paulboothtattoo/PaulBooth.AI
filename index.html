@@ -83,7 +83,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Oxanium:wght@300;400;500;600&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260804-machine-text-single-line" />
+  <link rel="stylesheet" href="styles.css?v=20260804-machine-titles-smaller" />
   <link rel="stylesheet" href="visions-galleries.css" />
   <link rel="stylesheet" href="image-protection.css" />
   <style id="realm-centering-fix">
@@ -596,6 +596,51 @@
 
       #machines .manifest-machine-card p {
         font-size: clamp(9px, 2.2vw, 13px) !important;
+      }
+    }
+
+
+
+    /* =========================================================
+       INTELLIGENT MACHINES — SMALLER VIDEO TITLES
+       Stronger selectors to override dynamically injected styles.
+       ========================================================= */
+    #machines #machine-grid .manifest-machine-card h3,
+    #machines #machine-grid .machine-card h3,
+    #machine-grid .manifest-machine-card h3,
+    #machine-grid .machine-card h3 {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-right: 0 !important;
+      font-size: 11px !important;
+      line-height: 1.1 !important;
+      letter-spacing: 0 !important;
+      white-space: nowrap !important;
+      word-break: normal !important;
+      overflow-wrap: normal !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+      -ms-hyphens: none !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+    }
+
+    @media (max-width: 1100px) {
+      #machines #machine-grid .manifest-machine-card h3,
+      #machines #machine-grid .machine-card h3,
+      #machine-grid .manifest-machine-card h3,
+      #machine-grid .machine-card h3 {
+        font-size: 10px !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      #machines #machine-grid .manifest-machine-card h3,
+      #machines #machine-grid .machine-card h3,
+      #machine-grid .manifest-machine-card h3,
+      #machine-grid .machine-card h3 {
+        font-size: 9px !important;
       }
     }
 
