@@ -83,7 +83,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Oxanium:wght@300;400;500;600&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260804-all-videos-enlargeable" />
+  <link rel="stylesheet" href="styles.css?v=20260804-machine-text-single-line" />
   <link rel="stylesheet" href="visions-galleries.css" />
   <link rel="stylesheet" href="image-protection.css" />
   <style id="realm-centering-fix">
@@ -517,6 +517,85 @@
       #realm-grid.realm-grid > .realm-card {
         width: 100% !important;
         max-width: 560px !important;
+      }
+    }
+
+
+
+    /* =========================================================
+       INTELLIGENT MACHINES — SINGLE-LINE TEXT
+       No wrapping, word breaking, or automatic hyphenation.
+       ========================================================= */
+    #machines .manifest-machine-card {
+      min-width: 0 !important;
+    }
+
+    #machines .manifest-machine-card .machine-index,
+    #machines .manifest-machine-card h3,
+    #machines .manifest-machine-card p,
+    #machines .manifest-machine-card > a {
+      max-width: calc(100% - 48px) !important;
+      white-space: nowrap !important;
+      word-break: keep-all !important;
+      overflow-wrap: normal !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+      -ms-hyphens: none !important;
+    }
+
+    #machines .manifest-machine-card h3 {
+      font-size: clamp(15px, 1.42vw, 24px) !important;
+      letter-spacing: .015em !important;
+      line-height: 1.15 !important;
+    }
+
+    #machines .manifest-machine-card p {
+      font-size: clamp(10px, .78vw, 14px) !important;
+      letter-spacing: 0 !important;
+      line-height: 1.35 !important;
+    }
+
+    #machines .manifest-machine-card > a {
+      font-size: clamp(10px, .8vw, 13px) !important;
+      letter-spacing: .08em !important;
+    }
+
+    /* Scale very long lines to the available card width instead of hyphenating. */
+    #machines .manifest-machine-card h3,
+    #machines .manifest-machine-card p,
+    #machines .manifest-machine-card > a {
+      overflow: hidden !important;
+      text-overflow: clip !important;
+    }
+
+    @media (min-width: 901px) and (max-width: 1250px) {
+      #machines .manifest-machine-card h3 {
+        font-size: 14px !important;
+      }
+
+      #machines .manifest-machine-card p {
+        font-size: 9px !important;
+      }
+
+      #machines .manifest-machine-card > a {
+        font-size: 9px !important;
+      }
+    }
+
+    @media (max-width: 900px) {
+      #machines .manifest-machine-card .machine-index,
+      #machines .manifest-machine-card h3,
+      #machines .manifest-machine-card p,
+      #machines .manifest-machine-card > a {
+        max-width: calc(100% - 36px) !important;
+      }
+
+      #machines .manifest-machine-card h3 {
+        font-size: clamp(13px, 3.4vw, 20px) !important;
+      }
+
+      #machines .manifest-machine-card p {
+        font-size: clamp(9px, 2.2vw, 13px) !important;
       }
     }
 
