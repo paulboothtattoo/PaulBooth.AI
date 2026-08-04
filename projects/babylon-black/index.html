@@ -84,6 +84,26 @@
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="stylesheet" href="../../image-protection.css" />
   <link rel="stylesheet" href="babylon-black.css" />
+
+  <style>
+    .bb-youtube-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .bb-youtube-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+  </style>
+
 </head>
 <body class="bb-body">
   <div class="page-noise" aria-hidden="true"></div>
@@ -114,11 +134,17 @@
     <section class="bb-section" id="film">
       <div class="bb-section-heading"><span class="bb-label">Motion Archive / 01</span><h2>Music Video</h2></div>
       <div class="bb-video-shell">
-        <video controls controlsList="nodownload noremoteplayback" disablePictureInPicture disableremoteplayback preload="metadata" poster="media/babylon-black-poster.jpg" oncontextmenu="return false;">
-          <source src="media/babylon-black-music-video.mp4" type="video/mp4" />
-          Your browser does not support embedded video.
-        </video>
-        <div class="bb-video-meta"><span>Babylon Black</span><span>03:08</span><span>HD / Stereo</span></div>
+        <div class="bb-youtube-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/qazeawsKeQE?rel=0&modestbranding=1&playsinline=1"
+            title="Zion Lost music video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="bb-video-meta"><span>Zion Lost</span><span>YouTube</span><span>HD / Stereo</span></div>
       </div>
     </section>
 
@@ -181,6 +207,6 @@
 
   <dialog class="bb-lightbox"><button aria-label="Close gallery">×</button><img alt="Expanded Babylon Black gallery image" /></dialog>
   <script src="../../image-protection.js"></script>
-  <script src="babylon-black.js?v=20260724-protected-player-volume"></script>
+  <script src="babylon-black.js?v=20260804-zion-youtube-video"></script>
 </body>
 </html>
