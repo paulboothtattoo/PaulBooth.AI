@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="pb-build" content="header-nav-fix-v2-20260805" />
 
   <title>PaulBooth.ai — AI Art, Biomechanical Design &amp; Digital Experiments</title>
   <meta name="description" content="Explore Paul Booth&#x27;s official archive of AI art, biomechanical design, motion systems, music, research, intelligent machines, and experimental digital work." />
@@ -83,7 +84,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Oxanium:wght@300;400;500;600&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260805-brighter-logo-nav-links" />
+  <link rel="stylesheet" href="styles.css?v=20260805-header-nav-fix-v2" />
   <link rel="stylesheet" href="visions-galleries.css" />
   <link rel="stylesheet" href="image-protection.css" />
   <style id="realm-centering-fix">
@@ -661,7 +662,33 @@
       }
     }
 
-  </style>
+  
+
+    /* HEADER NAVIGATION — authoritative sister-link move */
+    .site-header {
+      grid-template-columns: auto 1fr auto !important;
+    }
+    .site-header .desktop-nav {
+      justify-self: end !important;
+      display: flex !important;
+      align-items: center !important;
+      flex-wrap: nowrap !important;
+      gap: clamp(12px, 1.35vw, 24px) !important;
+    }
+    .site-header .desktop-nav a {
+      font-size: clamp(8px, .72vw, 10px) !important;
+      white-space: nowrap !important;
+    }
+    .site-header .sister-site-actions,
+    .site-header .sister-site-button,
+    .site-header .header-cta {
+      display: none !important;
+    }
+    @media (max-width: 1100px) {
+      .site-header .desktop-nav { display: none !important; }
+      .site-header .menu-button { display: block !important; justify-self: end !important; }
+    }
+</style>
 </head>
 <body>
   <div class="page-noise" aria-hidden="true"></div>
@@ -678,7 +705,7 @@
       <a href="#motion">Motion</a>
       <a href="#machines">Machines</a>
       <a href="#about">About</a>
-      <a href="https://paulboothart.com/">PaulBoothArt.com</a>
+          <a href="https://paulboothart.com/">PaulBoothArt.com</a>
       <a href="https://paulboothbrand.com/">PaulBoothBrand.com</a>
     </nav>
     <button class="menu-button" aria-label="Open menu" aria-expanded="false">
@@ -692,7 +719,7 @@
     <a href="#motion">Motion Systems</a>
     <a href="#machines">Intelligent Machines</a>
     <a href="#about">About Paul Booth</a>
-    <a href="https://paulboothart.com/">PaulBoothArt.com</a>
+      <a href="https://paulboothart.com/">PaulBoothArt.com</a>
     <a href="https://paulboothbrand.com/">PaulBoothBrand.com</a>
   </div>
 
