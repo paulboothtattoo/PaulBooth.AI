@@ -68,78 +68,17 @@
   const youtubeMarkup = (item) => {
     const videoId = escapeHtml(item.youtubeId || "");
     const orientationClass = item.videoOrientation === "vertical" ? " is-vertical" : " is-landscape";
-    const title = escapeHtml(item.title || "Embedded video");
-    const poster = escapeHtml(
-      item.poster || `https://i.ytimg.com/vi/${item.youtubeId || ""}/maxresdefault.jpg`
-    );
-    const posterFallback = escapeHtml(
-      item.posterFallback || `https://i.ytimg.com/vi/${item.youtubeId || ""}/hqdefault.jpg`
-    );
 
     return `<div class="pb-youtube-embed${orientationClass}">
-      <button
-        class="pb-youtube-poster"
-        type="button"
-        data-youtube-id="${videoId}"
-        data-youtube-title="${title}"
-        aria-label="Play ${title}">
-        <img
-          src="${poster}"
-          data-poster-fallback="${posterFallback}"
-          alt=""
-          loading="lazy"
-          decoding="async"
-          draggable="false">
-        <span class="pb-youtube-shade" aria-hidden="true"></span>
-        <span class="pb-youtube-brand" aria-hidden="true">PAULBOOTH.AI</span>
-        <span class="pb-custom-play" aria-hidden="true">
-          <span class="pb-custom-play-triangle"></span>
-        </span>
-      </button>
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&playsinline=1"
+        title="${escapeHtml(item.title || "Embedded video")}"
+        loading="lazy"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
     </div>`;
   };
-
-
-
-  const activateYoutubePoster = (posterButton) => {
-    if (!(posterButton instanceof HTMLButtonElement)) return;
-
-    const videoId = posterButton.dataset.youtubeId || "";
-    const title = posterButton.dataset.youtubeTitle || "Embedded video";
-    const wrapper = posterButton.closest(".pb-youtube-embed");
-
-    if (!videoId || !wrapper || wrapper.classList.contains("is-playing")) return;
-
-    wrapper.classList.add("is-playing");
-
-    const iframe = document.createElement("iframe");
-    iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?rel=0&playsinline=1&autoplay=1`;
-    iframe.title = title;
-    iframe.loading = "eager";
-    iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share";
-    iframe.referrerPolicy = "strict-origin-when-cross-origin";
-    iframe.allowFullscreen = true;
-
-    posterButton.replaceWith(iframe);
-  };
-
-  document.addEventListener("click", (event) => {
-    const posterButton = event.target.closest(".pb-youtube-poster");
-    if (posterButton) activateYoutubePoster(posterButton);
-  });
-
-  document.addEventListener("error", (event) => {
-    const image = event.target;
-    if (!(image instanceof HTMLImageElement)) return;
-    if (!image.closest(".pb-youtube-poster")) return;
-
-    const fallback = image.dataset.posterFallback || "";
-    if (!fallback || image.dataset.posterFallbackUsed === "true") return;
-
-    image.dataset.posterFallbackUsed = "true";
-    image.src = fallback;
-  }, true);
-
 
   const installMachineStyles = () => {
     if (document.querySelector("#manifest-machine-styles")) return;
@@ -258,8 +197,14 @@
     );
 
     grid.innerHTML = motionItems.map((item, index) => {
-      const directLink = item.link ? escapeHtml(item.link) : "";
-      const actionLabel = item.link ? "Open project" : "";
+      const directLink = escapeHtml(item.link || item.src || "");
+      const actionLabel = item.link
+        ? "Open project"
+        : item.mediaType === "document"
+          ? "Open white paper"
+          : item.mediaType === "video"
+            ? "Open video"
+            : "Open file";
 
       const orientation = item.videoOrientation === "vertical" ? "vertical" : "landscape";
       const mediaClasses = item.mediaType === "youtube"
@@ -510,12 +455,10 @@ window.addEventListener('pointermove', (event) => {
   glow.style.transform = `translate(${event.clientX - 260}px, ${event.clientY - 260}px)`;
 });
 
-const signalForm = document.querySelector('.signal-form');
-signalForm?.addEventListener('submit', (event) => {
+document.querySelector('.signal-form').addEventListener('submit', (event) => {
   event.preventDefault();
   const input = event.currentTarget.querySelector('input');
   const button = event.currentTarget.querySelector('button');
-  if (!input || !button) return;
   if (!input.value.trim()) return input.focus();
   button.innerHTML = 'Signal received <span>✓</span>';
   input.value = '';

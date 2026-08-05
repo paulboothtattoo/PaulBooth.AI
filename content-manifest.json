@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T07:20:00.000Z",
+  "generatedAt": "2026-07-22T00:28:53.088Z",
   "items": [
     {
       "id": "machines-TimeLord Ad01",
@@ -79,7 +79,6 @@
       "mediaType": "youtube",
       "src": "",
       "filename": "",
-      "modified": 1767317926910.0127,
       "youtubeId": "GZifBUkfaNQ",
       "videoOrientation": "landscape",
       "embedUrl": "https://www.youtube-nocookie.com/embed/GZifBUkfaNQ"
@@ -97,7 +96,6 @@
       "mediaType": "youtube",
       "src": "",
       "filename": "",
-      "modified": 1761077190000,
       "youtubeId": "8j-BDQW0nLA",
       "videoOrientation": "landscape",
       "embedUrl": "https://www.youtube-nocookie.com/embed/8j-BDQW0nLA"
@@ -115,7 +113,6 @@
       "mediaType": "youtube",
       "src": "",
       "filename": "",
-      "modified": 1745047768000,
       "youtubeId": "66Mop21TKcg",
       "videoOrientation": "landscape",
       "embedUrl": "https://www.youtube-nocookie.com/embed/66Mop21TKcg"
@@ -133,7 +130,6 @@
       "mediaType": "youtube",
       "src": "",
       "filename": "",
-      "modified": 1744589566000,
       "youtubeId": "fkd1w2lhSv4",
       "videoOrientation": "vertical",
       "embedUrl": "https://www.youtube-nocookie.com/embed/fkd1w2lhSv4"
@@ -151,7 +147,6 @@
       "mediaType": "youtube",
       "src": "",
       "filename": "",
-      "modified": 1744476700000,
       "youtubeId": "-NRropwmnJ8",
       "videoOrientation": "vertical",
       "embedUrl": "https://www.youtube-nocookie.com/embed/-NRropwmnJ8"
@@ -182,7 +177,7 @@
       "type": "White Paper",
       "status": "Version 1.1",
       "date": "March 2026",
-      "link": "",
+      "link": "content/machines/ThetaForge%20White%20Paper.pdf",
       "mediaType": "document",
       "src": "content/machines/ThetaForge%20White%20Paper.pdf",
       "filename": "ThetaForge White Paper.pdf"
