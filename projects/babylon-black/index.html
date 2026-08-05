@@ -101,6 +101,70 @@
       height: 100%;
       border: 0;
       display: block;
+      z-index: 1;
+    }
+
+    .bb-youtube-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      border: 0;
+      cursor: pointer;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .bb-youtube-overlay[hidden] {
+      display: none;
+    }
+
+    .bb-youtube-overlay img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .bb-youtube-overlay::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.38), rgba(0,0,0,.08) 52%, rgba(0,0,0,.18));
+    }
+
+    .bb-youtube-play {
+      position: relative;
+      z-index: 1;
+      width: 76px;
+      height: 54px;
+      border-radius: 16px;
+      background: rgba(8,8,8,.72);
+      border: 1px solid rgba(255,255,255,.28);
+      box-shadow: 0 12px 34px rgba(0,0,0,.45);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .bb-youtube-play::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-38%, -50%);
+      width: 0;
+      height: 0;
+      border-top: 11px solid transparent;
+      border-bottom: 11px solid transparent;
+      border-left: 18px solid rgba(255,255,255,.96);
     }
   </style>
 
@@ -134,7 +198,7 @@
     <section class="bb-section" id="film">
       <div class="bb-section-heading"><span class="bb-label">Motion Archive / 01</span><h2>Music Video</h2></div>
       <div class="bb-video-shell">
-        <div class="bb-youtube-frame">
+        <div class="bb-youtube-frame" data-zion-video>
           <iframe
             src="https://www.youtube-nocookie.com/embed/qazeawsKeQE?rel=0&modestbranding=1&playsinline=1"
             title="Zion Lost music video"
@@ -143,6 +207,10 @@
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen>
           </iframe>
+          <button class="bb-youtube-overlay" type="button" aria-label="Play Zion Lost music video" data-zion-overlay>
+            <img src="media/babylon-black-poster.jpg" alt="" aria-hidden="true">
+            <span class="bb-youtube-play" aria-hidden="true"></span>
+          </button>
         </div>
         <div class="bb-video-meta"><span>Zion Lost</span><span>YouTube</span><span>HD / Stereo</span></div>
       </div>
@@ -207,6 +275,26 @@
 
   <dialog class="bb-lightbox"><button aria-label="Close gallery">×</button><img alt="Expanded Babylon Black gallery image" /></dialog>
   <script src="../../image-protection.js"></script>
-  <script src="babylon-black.js?v=20260804-zion-youtube-video"></script>
+  <script>
+    (() => {
+      const shell = document.querySelector("[data-zion-video]");
+      if (!shell) return;
+
+      const iframe = shell.querySelector("iframe");
+      const overlay = shell.querySelector("[data-zion-overlay]");
+      if (!iframe || !overlay) return;
+
+      overlay.addEventListener("click", () => {
+        overlay.hidden = true;
+
+        if (!iframe.src.includes("autoplay=1")) {
+          const separator = iframe.src.includes("?") ? "&" : "?";
+          iframe.src = `${iframe.src}${separator}autoplay=1`;
+        }
+      });
+    })();
+  </script>
+
+  <script src="babylon-black.js?v=20260804-zion-youtube-overlay"></script>
 </body>
 </html>
