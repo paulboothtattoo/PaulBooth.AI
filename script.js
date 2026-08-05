@@ -67,12 +67,30 @@
 
   const youtubeMarkup = (item) => {
     const videoId = escapeHtml(item.youtubeId || "");
+    const title = escapeHtml(item.title || "Embedded video");
     const orientationClass = item.videoOrientation === "vertical" ? " is-vertical" : " is-landscape";
+    const poster = item.poster
+      ? escapeHtml(item.poster)
+      : `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
 
-    return `<div class="pb-youtube-embed${orientationClass}">
+    return `<div class="pb-youtube-embed pb-guaranteed-youtube${orientationClass}" data-youtube-id="${videoId}">
+      <button
+        class="pb-guaranteed-youtube-overlay"
+        type="button"
+        aria-label="Play ${title}">
+        <img
+          src="${poster}"
+          data-fallback="https://i.ytimg.com/vi/${videoId}/hqdefault.jpg"
+          alt="${title} preview"
+          loading="lazy">
+        <span class="pb-guaranteed-youtube-play" aria-hidden="true"></span>
+      </button>
+
       <iframe
-        src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&playsinline=1"
-        title="${escapeHtml(item.title || "Embedded video")}"
+        class="pb-guaranteed-youtube-iframe"
+        src="about:blank"
+        data-src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1"
+        title="${title}"
         loading="lazy"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
@@ -91,6 +109,92 @@
       .manifest-machine-preview.is-youtube-preview { aspect-ratio:auto; height:auto; min-height:0; overflow:visible; display:block; }
       .manifest-machine-preview video { display:block; width:100%; height:100%; object-fit:contain; background:#000; }
       .manifest-machine-card .machine-index { margin-bottom:14px; }
+
+      .pb-guaranteed-youtube {
+        position: relative;
+        overflow: hidden;
+        background: #000;
+      }
+
+      .pb-guaranteed-youtube .pb-guaranteed-youtube-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        background: #000;
+        cursor: pointer;
+        overflow: hidden;
+      }
+
+      .pb-guaranteed-youtube .pb-guaranteed-youtube-overlay img {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+      }
+
+      .pb-guaranteed-youtube .pb-guaranteed-youtube-overlay::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,.36), rgba(0,0,0,.06) 55%, rgba(0,0,0,.16));
+        pointer-events: none;
+      }
+
+      .pb-guaranteed-youtube .pb-guaranteed-youtube-play {
+        position: relative;
+        z-index: 2;
+        width: 78px;
+        height: 56px;
+        border-radius: 16px;
+        background: rgba(8,8,8,.76);
+        border: 1px solid rgba(255,255,255,.34);
+        box-shadow: 0 12px 34px rgba(0,0,0,.48);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+      }
+
+      .pb-guaranteed-youtube .pb-guaranteed-youtube-play::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-38%, -50%);
+        width: 0;
+        height: 0;
+        border-top: 11px solid transparent;
+        border-bottom: 11px solid transparent;
+        border-left: 18px solid #fff;
+      }
+
+      .pb-guaranteed-youtube .pb-guaranteed-youtube-iframe {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        display: none;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: #000;
+      }
+
+      .pb-guaranteed-youtube.is-playing .pb-guaranteed-youtube-overlay {
+        display: none;
+      }
+
+      .pb-guaranteed-youtube.is-playing .pb-guaranteed-youtube-iframe {
+        display: block;
+      }
     `;
     document.head.appendChild(style);
   };
@@ -187,6 +291,34 @@
     });
   });
 
+
+  const enableGuaranteedYoutubeOverlays = (root = document) => {
+    root.querySelectorAll(".pb-guaranteed-youtube").forEach((shell) => {
+      if (shell.dataset.overlayReady === "true") return;
+      shell.dataset.overlayReady = "true";
+
+      const overlay = shell.querySelector(".pb-guaranteed-youtube-overlay");
+      const iframe = shell.querySelector(".pb-guaranteed-youtube-iframe");
+      const image = shell.querySelector(".pb-guaranteed-youtube-overlay img");
+
+      if (image) {
+        image.addEventListener("error", () => {
+          const fallback = image.dataset.fallback;
+          if (fallback && image.src !== fallback) image.src = fallback;
+        }, { once: true });
+      }
+
+      if (!overlay || !iframe) return;
+
+      overlay.addEventListener("click", () => {
+        if (!iframe.src || iframe.src === "about:blank") {
+          iframe.src = iframe.dataset.src || iframe.src;
+        }
+        shell.classList.add("is-playing");
+      }, { once: true });
+    });
+  };
+
   const renderMotionSystems = (items) => {
     const grid = document.querySelector("#motion-project-grid");
     const empty = document.querySelector("#motion-project-empty");
@@ -233,6 +365,7 @@
     }).join("");
 
     empty.hidden = motionItems.length > 0;
+    enableGuaranteedYoutubeOverlays(grid);
   };
   const renderIntelligentMachines = (items) => {
     const grid = document.querySelector("#machine-grid");
@@ -270,6 +403,7 @@
         ${directLink ? `<a href="${directLink}" target="_self" rel="noopener">${actionLabel} <span>→</span></a>` : ""}
       </article>`;
     }).join("");
+    enableGuaranteedYoutubeOverlays(grid);
   };
 
   const renderRepository = (items) => {

@@ -83,7 +83,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Oxanium:wght@300;400;500;600&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260804-fixed-header-only" />
+  <link rel="stylesheet" href="styles.css?v=20260805-brighter-logo-nav-links" />
   <link rel="stylesheet" href="visions-galleries.css" />
   <link rel="stylesheet" href="image-protection.css" />
   <style id="realm-centering-fix">
@@ -662,110 +662,6 @@
     }
 
   </style>
-
-  <style id="pb-universal-youtube-overlay-styles">
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready {
-      position: relative;
-      overflow: hidden;
-      background: #000;
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-youtube-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 30;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      padding: 0;
-      margin: 0;
-      border: 0;
-      background: #000;
-      cursor: pointer;
-      overflow: hidden;
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-youtube-overlay img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      display: block;
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-youtube-overlay::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.2));
-      z-index: 1;
-      pointer-events: none;
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-youtube-play {
-      position: relative;
-      z-index: 2;
-      width: 82px;
-      height: 58px;
-      border-radius: 16px;
-      background: rgba(8,8,8,.76);
-      border: 1px solid rgba(255,255,255,.36);
-      box-shadow: 0 14px 34px rgba(0,0,0,.42);
-      backdrop-filter: blur(6px);
-      pointer-events: none;
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-youtube-play::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-36%, -50%);
-      width: 0;
-      height: 0;
-      border-top: 11px solid transparent;
-      border-bottom: 11px solid transparent;
-      border-left: 18px solid #fff;
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready iframe.pb-universal-youtube-iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: none;
-      z-index: 5;
-      background: #000;
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready.is-playing iframe.pb-universal-youtube-iframe {
-      display: block;
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready.is-playing .pb-universal-youtube-overlay {
-      display: none;
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-enlarge {
-      position: absolute;
-      right: 12px;
-      top: 12px;
-      z-index: 40;
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.32);
-      background: rgba(0,0,0,.72);
-      color: #fff;
-      font-size: 17px;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 10px 20px rgba(0,0,0,.28);
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-enlarge:hover {
-      background: rgba(20,20,20,.86);
-    }
-  </style>
-
 </head>
 <body>
   <div class="page-noise" aria-hidden="true"></div>
@@ -782,12 +678,9 @@
       <a href="#motion">Motion</a>
       <a href="#machines">Machines</a>
       <a href="#about">About</a>
+      <a href="https://paulboothart.com/">PaulBoothArt.com</a>
+      <a href="https://paulboothbrand.com/">PaulBoothBrand.com</a>
     </nav>
-
-    <div class="sister-site-actions" aria-label="Sister sites">
-      <a class="sister-site-button" href="https://paulboothart.com">PaulBoothArt.com</a>
-      <a class="sister-site-button" href="https://paulboothbrand.com">PaulBoothBrand.com</a>
-    </div>
     <button class="menu-button" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -799,6 +692,8 @@
     <a href="#motion">Motion Systems</a>
     <a href="#machines">Intelligent Machines</a>
     <a href="#about">About Paul Booth</a>
+    <a href="https://paulboothart.com/">PaulBoothArt.com</a>
+    <a href="https://paulboothbrand.com/">PaulBoothBrand.com</a>
   </div>
 
   <main>
@@ -935,7 +830,7 @@
   </footer>
 
   <script src="content.js?v=20260804-vault-removed"></script>
-  <script src="script.js?v=20260730-youtube-overlays-restored-main-universal"></script>
+  <script src="script.js?v=20260804-guaranteed-youtube-overlays-v2"></script>
   <script src="visions-galleries.js"></script>
   <script src="image-protection.js"></script>
 
@@ -1093,169 +988,6 @@
       document.addEventListener("webkitfullscreenchange", refreshButtons);
     })();
   </script>
-
-
-  <script id="pb-universal-youtube-overlay-script">
-    (() => {
-      "use strict";
-
-      const EMBED_SELECTOR = ".pb-youtube-embed";
-      const YT_PATTERNS = [
-        /youtube(?:-nocookie)?\.com\/embed\/([A-Za-z0-9_-]{6,})/i,
-        /youtu\.be\/([A-Za-z0-9_-]{6,})/i,
-        /youtube\.com\/shorts\/([A-Za-z0-9_-]{6,})/i,
-        /youtube\.com.*[?&]v=([A-Za-z0-9_-]{6,})/i,
-        /ytimg\.com\/vi(?:_webp)?\/([A-Za-z0-9_-]{6,})\//i
-      ];
-
-      const extractIdFromText = (value) => {
-        if (!value || typeof value !== "string") return "";
-        for (const pattern of YT_PATTERNS) {
-          const match = value.match(pattern);
-          if (match && match[1]) return match[1];
-        }
-        return "";
-      };
-
-      const inferYoutubeId = (node) => {
-        if (!node) return "";
-        const directCandidates = [
-          node.dataset.youtubeId,
-          node.getAttribute("data-youtube-id"),
-          node.getAttribute("data-video-id"),
-          node.getAttribute("data-youtube")
-        ];
-        for (const candidate of directCandidates) {
-          const id = extractIdFromText(candidate || "") || (/^[A-Za-z0-9_-]{6,}$/.test(candidate || "") ? (candidate || "") : "");
-          if (id) return id;
-        }
-        const all = node.querySelectorAll("iframe, a, img, source, [data-youtube-id], [data-video-id], [href], [src]");
-        for (const el of all) {
-          const values = [
-            el.getAttribute && el.getAttribute("src"),
-            el.getAttribute && el.getAttribute("href"),
-            el.getAttribute && el.getAttribute("data-youtube-id"),
-            el.getAttribute && el.getAttribute("data-video-id"),
-            el.dataset && el.dataset.youtubeId,
-            el.dataset && el.dataset.videoId
-          ];
-          for (const value of values) {
-            const id = extractIdFromText(value || "") || (/^[A-Za-z0-9_-]{6,}$/.test(value || "") ? (value || "") : "");
-            if (id) return id;
-          }
-        }
-        return "";
-      };
-
-      const inferPoster = (node, youtubeId) => {
-        if (!node) return youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg` : "";
-        const img = node.querySelector("img");
-        if (img && img.src && !/play-button|icon/i.test(img.src)) return img.src;
-        const source = node.querySelector("iframe, a, [src], [href]");
-        if (source) {
-          const src = source.getAttribute("src") || source.getAttribute("href") || "";
-          if (/ytimg\.com/i.test(src)) return src;
-        }
-        return youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg` : "";
-      };
-
-      const escapeHtml = (value) => String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
-
-      const attachFullscreen = (container, button) => {
-        if (!container || !button) return;
-        button.addEventListener("click", async (event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          try {
-            if (document.fullscreenElement || document.webkitFullscreenElement) {
-              if (document.exitFullscreen) await document.exitFullscreen();
-              else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-              return;
-            }
-            if (container.requestFullscreen) await container.requestFullscreen();
-            else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen();
-          } catch (error) {
-            console.warn("Unable to enlarge video:", error);
-          }
-        });
-      };
-
-      const prepareEmbed = (node) => {
-        if (!(node instanceof Element)) return;
-        if (node.dataset.pbUniversalYoutubeReady === "true") return;
-
-        const youtubeId = inferYoutubeId(node);
-        if (!youtubeId) return;
-
-        const poster = inferPoster(node, youtubeId);
-        node.dataset.pbUniversalYoutubeReady = "true";
-        node.classList.add("pb-universal-youtube-overlay-ready");
-        node.setAttribute("data-youtube-id", youtubeId);
-        node.removeAttribute("data-pb-enlarge-installed");
-        delete node.dataset.pbEnlargeInstalled;
-
-        node.innerHTML = `
-          <button type="button" class="pb-universal-youtube-overlay" aria-label="Play video">
-            <img src="${escapeHtml(poster)}" alt="Video preview">
-            <span class="pb-universal-youtube-play" aria-hidden="true"></span>
-          </button>
-          <iframe
-            class="pb-universal-youtube-iframe"
-            title="YouTube video player"
-            src="about:blank"
-            data-src="https://www.youtube-nocookie.com/embed/${escapeHtml(youtubeId)}?autoplay=1&rel=0&modestbranding=1&playsinline=1"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-          <button type="button" class="pb-universal-enlarge" aria-label="Enlarge video" title="Enlarge video">⛶</button>
-        `;
-
-        const overlay = node.querySelector('.pb-universal-youtube-overlay');
-        const iframe = node.querySelector('.pb-universal-youtube-iframe');
-        const enlarge = node.querySelector('.pb-universal-enlarge');
-
-        if (overlay && iframe) {
-          overlay.addEventListener('click', (event) => {
-            event.preventDefault();
-            if (!iframe.src || iframe.src === 'about:blank') {
-              iframe.src = iframe.dataset.src || iframe.src;
-            }
-            node.classList.add('is-playing');
-          }, { once: true });
-        }
-
-        attachFullscreen(node, enlarge);
-      };
-
-      const scan = (root = document) => {
-        if (root.matches && root.matches(EMBED_SELECTOR)) prepareEmbed(root);
-        if (root.querySelectorAll) root.querySelectorAll(EMBED_SELECTOR).forEach(prepareEmbed);
-      };
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => scan());
-      } else {
-        scan();
-      }
-
-      const observer = new MutationObserver((mutations) => {
-        for (const mutation of mutations) {
-          mutation.addedNodes.forEach((node) => {
-            if (!(node instanceof Element)) return;
-            scan(node);
-          });
-        }
-      });
-      observer.observe(document.documentElement, { childList: true, subtree: true });
-    })();
-  </script>
-
 
 </body>
 </html>
