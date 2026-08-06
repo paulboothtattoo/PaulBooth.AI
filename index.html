@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>PaulBooth.ai — AI Art, Biomechanical Design &amp; Digital Experiments</title>
   <meta name="description" content="Explore Paul Booth&#x27;s official archive of AI art, biomechanical design, motion systems, music, research, intelligent machines, and experimental digital work." />
@@ -83,7 +84,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Oxanium:wght@300;400;500;600&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260804-fixed-header-only" />
+  <link rel="stylesheet" href="styles.css?v=20260805-brighter-hero-logo-v2" />
   <link rel="stylesheet" href="visions-galleries.css" />
   <link rel="stylesheet" href="image-protection.css" />
   <style id="realm-centering-fix">
@@ -661,113 +662,1234 @@
       }
     }
 
-  </style>
 
-  <style id="pb-universal-youtube-overlay-styles">
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready {
+    /* Fixed full-page biomechanical background */
+    body {
+      background: #000 !important;
       position: relative;
-      overflow: hidden;
-      background: #000;
     }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-youtube-overlay {
-      position: absolute;
+
+    .fixed-page-background {
+      position: fixed;
       inset: 0;
-      z-index: 30;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      padding: 0;
-      margin: 0;
-      border: 0;
-      background: #000;
-      cursor: pointer;
-      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, rgba(0,0,0,.10) 0%, rgba(0,0,0,.42) 58%, rgba(0,0,0,.78) 100%),
+        url('assets/page-fixed-bg-zoomed.png') center center / 95% auto no-repeat;
+      opacity: .98;
+      filter: contrast(1.06) brightness(.92);
+      transform: scale(1.02);
+      transform-origin: center center;
+      will-change: transform;
     }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-youtube-overlay img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      display: block;
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-youtube-overlay::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.2));
+
+    .site-header,
+    .mobile-panel,
+    main,
+    .page-noise,
+    .cursor-glow {
+      position: relative;
       z-index: 1;
+    }
+
+    @media (max-width: 980px) {
+      .fixed-page-background {
+        background-size: 110% auto;
+        background-position: center top;
+      }
+    }
+
+
+
+    /* New animated hero background and logo */
+    .hero {
+      position: relative;
+      min-height: 78vh;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-background-layer {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, rgba(0,0,0,.10) 0%, rgba(0,0,0,.32) 50%, rgba(0,0,0,.72) 100%),
+        url('assets/hero-background-new.png') center center / cover no-repeat !important;
+      transform: scale(1.08);
+      transform-origin: center center;
+      filter: brightness(.86) contrast(1.08) saturate(.94);
+      animation: heroBgBreath 16s ease-in-out infinite alternate;
+      will-change: transform, filter;
+    }
+
+    .hero-background-layer::before,
+    .hero-background-layer::after {
+      content: '';
+      position: absolute;
+      inset: -8%;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .hero-background-layer::before {
+      background:
+        radial-gradient(circle at 50% 46%, rgba(255,255,255,.04), rgba(255,255,255,0) 28%),
+        radial-gradient(circle at 50% 52%, rgba(165,38,28,.16), rgba(165,38,28,0) 35%),
+        radial-gradient(circle at 18% 50%, rgba(255,255,255,.07), rgba(255,255,255,0) 18%),
+        radial-gradient(circle at 82% 50%, rgba(255,255,255,.07), rgba(255,255,255,0) 18%);
+      filter: blur(26px);
+      opacity: .85;
+      animation: heroFogDrift 22s ease-in-out infinite alternate;
+    }
+
+    .hero-background-layer::after {
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.36), rgba(0,0,0,.08) 26%, rgba(0,0,0,.12) 74%, rgba(0,0,0,.48)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.018) 0 1px, transparent 1px 5px);
+      opacity: .65;
+      animation: heroBgPulse 9s ease-in-out infinite;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      padding-top: 2rem;
+    }
+
+    .hero-logo-stage {
+      display: block !important;
+      position: relative;
+      width: min(72vw, 720px);
+      aspect-ratio: 1 / 1;
+      margin: 0 auto;
+      transform-style: preserve-3d;
+      animation: heroLogoFloat 8s ease-in-out infinite;
+      filter: drop-shadow(0 22px 30px rgba(0,0,0,.88));
+    }
+
+    .hero-logo-stage::before {
+      content: '';
+      position: absolute;
+      inset: 12% 8% 22%;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(168,34,24,.34) 0%, rgba(104,18,14,.22) 22%, rgba(0,0,0,0) 62%);
+      filter: blur(34px);
+      opacity: .95;
+      animation: heroLogoHalo 7.5s ease-in-out infinite;
+    }
+
+    .hero-logo-stage::after {
+      content: '';
+      position: absolute;
+      left: 14%;
+      right: 14%;
+      bottom: 10%;
+      height: 12%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,.62), rgba(0,0,0,0) 70%);
+      filter: blur(18px);
+      opacity: .88;
+      transform: translateZ(-10px);
+      animation: heroShadowShift 8s ease-in-out infinite;
+    }
+
+    .hero-logo-glow {
+      display: block !important;
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 52% 34%, rgba(255,245,234,.22), rgba(255,245,234,0) 18%),
+        radial-gradient(circle at 50% 50%, rgba(176,34,24,.18), rgba(176,34,24,0) 42%);
+      filter: blur(30px);
+      opacity: .9;
+      animation: heroGlowPulse 6.5s ease-in-out infinite;
       pointer-events: none;
     }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-youtube-play {
+
+    .hero-logo-sweep {
+      display: block !important;
+      position: absolute;
+      inset: 5%;
+      border-radius: 50%;
+      overflow: hidden;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: .8;
+    }
+
+    .hero-logo-sweep::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      bottom: -10%;
+      width: 24%;
+      left: -28%;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.22), rgba(255,255,255,0));
+      transform: skewX(-20deg);
+      filter: blur(9px);
+      animation: heroSweep 6.8s linear infinite;
+    }
+
+    .official-logo {
+      display: block !important;
       position: relative;
       z-index: 2;
-      width: 82px;
-      height: 58px;
-      border-radius: 16px;
-      background: rgba(8,8,8,.76);
-      border: 1px solid rgba(255,255,255,.36);
-      box-shadow: 0 14px 34px rgba(0,0,0,.42);
-      backdrop-filter: blur(6px);
-      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: brightness(1.06) contrast(1.16) saturate(1.04)
+        drop-shadow(0 0 20px rgba(255,241,229,.08))
+        drop-shadow(0 0 42px rgba(154,32,22,.22));
+      animation: heroLogoShimmer 7.5s ease-in-out infinite;
     }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-youtube-play::before {
-      content: "";
+
+    .hero-manifesto {
+      position: relative;
+      z-index: 3;
+      text-shadow: 0 2px 12px rgba(0,0,0,.7);
+    }
+
+    @keyframes heroBgBreath {
+      0% { transform: scale(1.04) translate3d(0,0,0); filter: brightness(.82) contrast(1.06) saturate(.92); }
+      50% { transform: scale(1.08) translate3d(0,-0.6%,0); filter: brightness(.9) contrast(1.1) saturate(.98); }
+      100% { transform: scale(1.12) translate3d(0,0.5%,0); filter: brightness(.84) contrast(1.08) saturate(.94); }
+    }
+
+    @keyframes heroFogDrift {
+      0% { transform: translate3d(-1.5%, -1%, 0) scale(1); opacity: .72; }
+      50% { transform: translate3d(1.5%, 1%, 0) scale(1.04); opacity: .95; }
+      100% { transform: translate3d(-1%, 2%, 0) scale(1.02); opacity: .8; }
+    }
+
+    @keyframes heroBgPulse {
+      0%,100% { opacity: .56; }
+      50% { opacity: .74; }
+    }
+
+    @keyframes heroLogoFloat {
+      0%,100% { transform: translate3d(0,0,0) scale(1); }
+      50% { transform: translate3d(0,-12px,0) scale(1.022); }
+    }
+
+    @keyframes heroLogoHalo {
+      0%,100% { opacity: .72; transform: scale(.96); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    @keyframes heroShadowShift {
+      0%,100% { opacity: .72; transform: scale(1) translateY(0); }
+      50% { opacity: .92; transform: scale(1.06) translateY(4px); }
+    }
+
+    @keyframes heroGlowPulse {
+      0%,100% { opacity: .72; transform: scale(.96); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    @keyframes heroSweep {
+      0% { left: -28%; opacity: 0; }
+      12% { opacity: .55; }
+      50% { opacity: .8; }
+      88% { opacity: .55; }
+      100% { left: 108%; opacity: 0; }
+    }
+
+    @keyframes heroLogoShimmer {
+      0%,100% { filter: brightness(1.02) contrast(1.14) saturate(1.02) drop-shadow(0 0 16px rgba(255,241,229,.06)) drop-shadow(0 0 34px rgba(154,32,22,.18)); }
+      50% { filter: brightness(1.12) contrast(1.2) saturate(1.06) drop-shadow(0 0 24px rgba(255,241,229,.1)) drop-shadow(0 0 48px rgba(176,36,24,.28)); }
+    }
+
+    @media (max-width: 980px) {
+      .hero { min-height: 68vh; }
+      .hero-logo-stage { width: min(84vw, 560px); }
+      .hero-background-layer { background-size: cover !important; }
+    }
+
+    @media (max-width: 680px) {
+      .hero-logo-stage { width: min(88vw, 460px); }
+      .hero-content { gap: .8rem; padding-top: 1rem; }
+    }
+
+
+    /* Remove smoke and background effects from logo animation */
+    .hero-logo-stage::before,
+    .hero-logo-stage::after,
+    .hero-logo-glow,
+    .hero-logo-sweep,
+    .hero-logo-sweep::before {
+      display: none !important;
+      content: none !important;
+      background: none !important;
+      opacity: 0 !important;
+      filter: none !important;
+      animation: none !important;
+    }
+
+    .hero-logo-stage {
+      filter: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .official-logo {
+      background: transparent !important;
+      filter: brightness(1.04) contrast(1.14) saturate(1.02) !important;
+      animation: heroLogoShimmerClean 7.5s ease-in-out infinite !important;
+    }
+
+    @keyframes heroLogoShimmerClean {
+      0%,100% {
+        filter: brightness(1.00) contrast(1.12) saturate(1.0);
+      }
+      50% {
+        filter: brightness(1.08) contrast(1.18) saturate(1.04);
+      }
+    }
+
+
+    /* Definitive hero logo unclipping fix */
+    .hero-logo-stage {
+      overflow: visible !important;
+      border-radius: 0 !important;
+      clip-path: none !important;
+      -webkit-clip-path: none !important;
+      mask: none !important;
+      -webkit-mask: none !important;
+      isolation: auto !important;
+    }
+
+    .hero-logo-stage::before,
+    .hero-logo-stage::after,
+    .hero-logo-glow,
+    .hero-logo-sweep,
+    .hero-logo-sweep::before,
+    .hero-logo-sweep::after {
+      content: none !important;
+      display: none !important;
+      border-radius: 0 !important;
+      clip-path: none !important;
+      -webkit-clip-path: none !important;
+      mask: none !important;
+      -webkit-mask: none !important;
+      background: none !important;
+      box-shadow: none !important;
+    }
+
+    .official-logo {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: none !important;
+      max-height: none !important;
+      overflow: visible !important;
+      border-radius: 0 !important;
+      clip-path: none !important;
+      -webkit-clip-path: none !important;
+      mask: none !important;
+      -webkit-mask: none !important;
+      object-fit: contain !important;
+      background: transparent !important;
+    }
+
+
+    /* Restored logo atmosphere: light gray smoke and orbiting fire orbs */
+    .hero-logo-stage {
+      overflow: visible !important;
+      isolation: isolate !important;
+    }
+
+    .logo-smoke {
+      position: absolute;
+      inset: -12%;
+      pointer-events: none;
+      z-index: 1;
+      mix-blend-mode: screen;
+      opacity: .72;
+      filter: blur(18px);
+    }
+
+    .logo-smoke::before,
+    .logo-smoke::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-repeat: no-repeat;
+    }
+
+    .logo-smoke-a::before {
+      background:
+        radial-gradient(ellipse at 28% 42%, rgba(228,232,236,.42) 0%, rgba(210,216,220,.18) 16%, rgba(170,178,184,0) 42%),
+        radial-gradient(ellipse at 64% 24%, rgba(224,228,232,.34) 0%, rgba(197,203,208,.14) 15%, rgba(170,178,184,0) 38%),
+        radial-gradient(ellipse at 72% 68%, rgba(210,214,220,.28) 0%, rgba(190,196,202,.12) 14%, rgba(170,178,184,0) 34%);
+      animation: logoSmokeDriftA 14s ease-in-out infinite alternate;
+    }
+
+    .logo-smoke-a::after {
+      background:
+        radial-gradient(ellipse at 22% 70%, rgba(224,228,232,.28) 0%, rgba(200,205,210,.10) 14%, rgba(160,168,174,0) 34%),
+        radial-gradient(ellipse at 82% 46%, rgba(232,236,240,.34) 0%, rgba(210,216,220,.14) 14%, rgba(160,168,174,0) 36%);
+      animation: logoSmokeDriftB 18s ease-in-out infinite alternate;
+    }
+
+    .logo-smoke-b::before {
+      background:
+        conic-gradient(from 0deg at 50% 50%, rgba(0,0,0,0) 0 8%, rgba(220,224,228,.10) 8% 15%, rgba(0,0,0,0) 15% 28%, rgba(220,224,228,.08) 28% 37%, rgba(0,0,0,0) 37% 100%);
+      border-radius: 50%;
+      transform: scale(1.16);
+      opacity: .65;
+      animation: logoSmokeRotate 26s linear infinite;
+    }
+
+    .logo-smoke-b::after {
+      background:
+        radial-gradient(circle at 50% 50%, rgba(220,224,228,.10) 0%, rgba(210,216,222,.06) 26%, rgba(0,0,0,0) 48%);
+      border-radius: 50%;
+      transform: scale(1.02);
+      animation: logoSmokePulse 9s ease-in-out infinite;
+    }
+
+    .logo-orb-cluster {
+      position: absolute;
+      inset: -14%;
+      pointer-events: none;
+      z-index: 3;
+      animation: orbClusterRotate 38s linear infinite;
+    }
+
+    .fire-orb {
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-36%, -50%);
-      width: 0;
-      height: 0;
-      border-top: 11px solid transparent;
-      border-bottom: 11px solid transparent;
-      border-left: 18px solid #fff;
+      width: 16px;
+      height: 16px;
+      margin: -8px 0 0 -8px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 34% 34%, rgba(255,248,222,.98) 0%, rgba(255,210,118,.96) 18%, rgba(255,126,28,.94) 45%, rgba(182,34,16,.82) 70%, rgba(0,0,0,0) 100%);
+      box-shadow:
+        0 0 6px rgba(255,242,210,.9),
+        0 0 16px rgba(255,138,34,.8),
+        0 0 28px rgba(176,34,16,.58);
+      opacity: .92;
+      filter: blur(.15px);
     }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready iframe.pb-universal-youtube-iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: none;
-      z-index: 5;
-      background: #000;
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready.is-playing iframe.pb-universal-youtube-iframe {
-      display: block;
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready.is-playing .pb-universal-youtube-overlay {
-      display: none;
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-enlarge {
-      position: absolute;
-      right: 12px;
-      top: 12px;
-      z-index: 40;
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.32);
-      background: rgba(0,0,0,.72);
-      color: #fff;
-      font-size: 17px;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 10px 20px rgba(0,0,0,.28);
-    }
-    .pb-youtube-embed.pb-universal-youtube-overlay-ready .pb-universal-enlarge:hover {
-      background: rgba(20,20,20,.86);
-    }
-  </style>
 
+    .fire-orb::after {
+      content: '';
+      position: absolute;
+      inset: -55%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,142,40,.26) 0%, rgba(255,92,16,.16) 36%, rgba(0,0,0,0) 72%);
+      animation: orbFlicker 1.9s ease-in-out infinite alternate;
+    }
+
+    .orb-1 { transform: rotate(0deg) translateX(255px) scale(.95); animation: orbit1 8.5s linear infinite; }
+    .orb-2 { transform: rotate(38deg) translateX(210px) scale(.72); animation: orbit2 6.8s linear infinite reverse; }
+    .orb-3 { transform: rotate(82deg) translateX(286px) scale(1.05); animation: orbit3 10.5s linear infinite; }
+    .orb-4 { transform: rotate(118deg) translateX(190px) scale(.62); animation: orbit4 7.1s linear infinite reverse; }
+    .orb-5 { transform: rotate(154deg) translateX(248px) scale(.84); animation: orbit5 9.4s linear infinite; }
+    .orb-6 { transform: rotate(196deg) translateX(292px) scale(1.1); animation: orbit6 12.6s linear infinite reverse; }
+    .orb-7 { transform: rotate(230deg) translateX(214px) scale(.74); animation: orbit7 7.8s linear infinite; }
+    .orb-8 { transform: rotate(268deg) translateX(260px) scale(.92); animation: orbit8 11.3s linear infinite reverse; }
+    .orb-9 { transform: rotate(312deg) translateX(228px) scale(.68); animation: orbit9 6.4s linear infinite; }
+    .orb-10 { transform: rotate(340deg) translateX(300px) scale(1.18); animation: orbit10 13.8s linear infinite reverse; }
+
+    @keyframes logoSmokeDriftA {
+      0% { transform: translate3d(-2%, 1%, 0) scale(.98) rotate(0deg); opacity: .54; }
+      50% { transform: translate3d(2%, -2%, 0) scale(1.04) rotate(5deg); opacity: .78; }
+      100% { transform: translate3d(-1%, 2%, 0) scale(1.08) rotate(-4deg); opacity: .62; }
+    }
+
+    @keyframes logoSmokeDriftB {
+      0% { transform: translate3d(1%, -1%, 0) scale(1); opacity: .36; }
+      50% { transform: translate3d(-2%, 2%, 0) scale(1.07); opacity: .6; }
+      100% { transform: translate3d(2%, -2%, 0) scale(1.02); opacity: .42; }
+    }
+
+    @keyframes logoSmokeRotate {
+      from { transform: scale(1.16) rotate(0deg); }
+      to { transform: scale(1.16) rotate(360deg); }
+    }
+
+    @keyframes logoSmokePulse {
+      0%,100% { opacity: .28; transform: scale(.98); }
+      50% { opacity: .46; transform: scale(1.06); }
+    }
+
+    @keyframes orbClusterRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes orbFlicker {
+      0%,100% { opacity: .48; transform: scale(.9); }
+      50% { opacity: .92; transform: scale(1.18); }
+    }
+
+    @keyframes orbit1 { from { transform: rotate(0deg) translateX(255px) scale(.95); } to { transform: rotate(360deg) translateX(255px) scale(.95); } }
+    @keyframes orbit2 { from { transform: rotate(38deg) translateX(210px) scale(.72); } to { transform: rotate(398deg) translateX(210px) scale(.72); } }
+    @keyframes orbit3 { from { transform: rotate(82deg) translateX(286px) scale(1.05); } to { transform: rotate(442deg) translateX(286px) scale(1.05); } }
+    @keyframes orbit4 { from { transform: rotate(118deg) translateX(190px) scale(.62); } to { transform: rotate(478deg) translateX(190px) scale(.62); } }
+    @keyframes orbit5 { from { transform: rotate(154deg) translateX(248px) scale(.84); } to { transform: rotate(514deg) translateX(248px) scale(.84); } }
+    @keyframes orbit6 { from { transform: rotate(196deg) translateX(292px) scale(1.1); } to { transform: rotate(556deg) translateX(292px) scale(1.1); } }
+    @keyframes orbit7 { from { transform: rotate(230deg) translateX(214px) scale(.74); } to { transform: rotate(590deg) translateX(214px) scale(.74); } }
+    @keyframes orbit8 { from { transform: rotate(268deg) translateX(260px) scale(.92); } to { transform: rotate(628deg) translateX(260px) scale(.92); } }
+    @keyframes orbit9 { from { transform: rotate(312deg) translateX(228px) scale(.68); } to { transform: rotate(672deg) translateX(228px) scale(.68); } }
+    @keyframes orbit10 { from { transform: rotate(340deg) translateX(300px) scale(1.18); } to { transform: rotate(700deg) translateX(300px) scale(1.18); } }
+
+    @media (max-width: 980px) {
+      .logo-orb-cluster { inset: -10%; }
+      .orb-1 { animation-name: orbit1m; }
+      .orb-2 { animation-name: orbit2m; }
+      .orb-3 { animation-name: orbit3m; }
+      .orb-4 { animation-name: orbit4m; }
+      .orb-5 { animation-name: orbit5m; }
+      .orb-6 { animation-name: orbit6m; }
+      .orb-7 { animation-name: orbit7m; }
+      .orb-8 { animation-name: orbit8m; }
+      .orb-9 { animation-name: orbit9m; }
+      .orb-10 { animation-name: orbit10m; }
+    }
+
+    @keyframes orbit1m { from { transform: rotate(0deg) translateX(180px) scale(.85); } to { transform: rotate(360deg) translateX(180px) scale(.85); } }
+    @keyframes orbit2m { from { transform: rotate(38deg) translateX(148px) scale(.66); } to { transform: rotate(398deg) translateX(148px) scale(.66); } }
+    @keyframes orbit3m { from { transform: rotate(82deg) translateX(198px) scale(.95); } to { transform: rotate(442deg) translateX(198px) scale(.95); } }
+    @keyframes orbit4m { from { transform: rotate(118deg) translateX(136px) scale(.56); } to { transform: rotate(478deg) translateX(136px) scale(.56); } }
+    @keyframes orbit5m { from { transform: rotate(154deg) translateX(172px) scale(.78); } to { transform: rotate(514deg) translateX(172px) scale(.78); } }
+    @keyframes orbit6m { from { transform: rotate(196deg) translateX(206px) scale(1.0); } to { transform: rotate(556deg) translateX(206px) scale(1.0); } }
+    @keyframes orbit7m { from { transform: rotate(230deg) translateX(150px) scale(.66); } to { transform: rotate(590deg) translateX(150px) scale(.66); } }
+    @keyframes orbit8m { from { transform: rotate(268deg) translateX(184px) scale(.86); } to { transform: rotate(628deg) translateX(184px) scale(.86); } }
+    @keyframes orbit9m { from { transform: rotate(312deg) translateX(160px) scale(.62); } to { transform: rotate(672deg) translateX(160px) scale(.62); } }
+    @keyframes orbit10m { from { transform: rotate(340deg) translateX(210px) scale(1.06); } to { transform: rotate(700deg) translateX(210px) scale(1.06); } }
+
+
+    /* Updated hero background animation and smaller fire orbs */
+    .hero-background-layer {
+      background:
+        radial-gradient(circle at center, rgba(0,0,0,.08) 0%, rgba(0,0,0,.26) 52%, rgba(0,0,0,.58) 100%),
+        url('assets/hero-background-new.png') center center / cover no-repeat !important;
+      transform: scale(1.06);
+      filter: brightness(.82) contrast(1.08) saturate(.94);
+      animation: heroBgPortalDrift 18s ease-in-out infinite alternate !important;
+    }
+
+    .hero-background-layer::before {
+      opacity: .62 !important;
+      filter: blur(18px) !important;
+      animation: heroBgPortalSmoke 20s ease-in-out infinite alternate !important;
+    }
+
+    .hero-background-layer::after {
+      opacity: .5 !important;
+      animation: heroBgPulse 10s ease-in-out infinite !important;
+    }
+
+    @keyframes heroBgPortalDrift {
+      0% { transform: scale(1.03) translate3d(0%, 0%, 0); filter: brightness(.78) contrast(1.04) saturate(.92); }
+      35% { transform: scale(1.06) translate3d(-0.8%, -0.4%, 0); filter: brightness(.84) contrast(1.08) saturate(.96); }
+      70% { transform: scale(1.08) translate3d(0.9%, 0.5%, 0); filter: brightness(.88) contrast(1.12) saturate(1.0); }
+      100% { transform: scale(1.05) translate3d(-0.5%, 0.8%, 0); filter: brightness(.8) contrast(1.06) saturate(.94); }
+    }
+
+    @keyframes heroBgPortalSmoke {
+      0% { transform: translate3d(-1.4%, 1.1%, 0) scale(1); opacity: .42; }
+      50% { transform: translate3d(1.2%, -1.3%, 0) scale(1.04); opacity: .7; }
+      100% { transform: translate3d(-0.8%, 1.8%, 0) scale(1.02); opacity: .5; }
+    }
+
+    .fire-orb {
+      width: 10px !important;
+      height: 10px !important;
+      margin: -5px 0 0 -5px !important;
+      box-shadow:
+        0 0 4px rgba(255,242,210,.82),
+        0 0 10px rgba(255,138,34,.72),
+        0 0 18px rgba(176,34,16,.5) !important;
+    }
+
+    .fire-orb::after {
+      inset: -45% !important;
+    }
+
+    @media (max-width: 980px) {
+      .hero-background-layer {
+        background-position: center center !important;
+      }
+      .fire-orb {
+        width: 8px !important;
+        height: 8px !important;
+        margin: -4px 0 0 -4px !important;
+      }
+    }
+
+
+    /* Definitive hero background visibility fix */
+    #hero-animation {
+      position: relative !important;
+      isolation: isolate !important;
+      overflow: hidden !important;
+      background: #020202 !important;
+    }
+
+    #hero-animation .hero-background-layer {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: absolute !important;
+      inset: 0 !important;
+      z-index: -3 !important;
+      pointer-events: none !important;
+      background-image:
+        radial-gradient(circle at center, rgba(0,0,0,.06) 0%, rgba(0,0,0,.20) 52%, rgba(0,0,0,.46) 100%),
+        url('assets/hero-background-new.png') !important;
+      background-repeat: no-repeat !important;
+      background-position: center center !important;
+      background-size: cover !important;
+      filter: brightness(.92) contrast(1.08) saturate(.96) !important;
+      animation: heroBackgroundVisibleMotion 18s ease-in-out infinite alternate !important;
+      transform-origin: center center !important;
+    }
+
+    #hero-animation .hero-background-layer::before,
+    #hero-animation .hero-background-layer::after {
+      display: block !important;
+      content: '' !important;
+      position: absolute !important;
+      inset: 0 !important;
+      pointer-events: none !important;
+    }
+
+    #hero-animation .hero-background-layer::before {
+      background:
+        radial-gradient(ellipse at 50% 48%, rgba(220,224,228,.10), rgba(220,224,228,0) 34%),
+        radial-gradient(ellipse at 22% 54%, rgba(200,206,212,.08), rgba(200,206,212,0) 28%),
+        radial-gradient(ellipse at 78% 54%, rgba(200,206,212,.08), rgba(200,206,212,0) 28%) !important;
+      filter: blur(18px) !important;
+      opacity: .72 !important;
+      animation: heroBackgroundMist 20s ease-in-out infinite alternate !important;
+    }
+
+    #hero-animation .hero-background-layer::after {
+      background: linear-gradient(180deg, rgba(0,0,0,.24), rgba(0,0,0,.02) 30%, rgba(0,0,0,.08) 70%, rgba(0,0,0,.34)) !important;
+      opacity: 1 !important;
+    }
+
+    #hero-animation .hero-vignette,
+    #hero-animation .hero-smoke,
+    #hero-animation .hero-particles,
+    #hero-animation .hero-static,
+    #hero-animation .hero-scanlines {
+      z-index: -1 !important;
+    }
+
+    #hero-animation .hero-content,
+    #hero-animation .hero-status {
+      position: relative !important;
+      z-index: 3 !important;
+    }
+
+    @keyframes heroBackgroundVisibleMotion {
+      0% { transform: scale(1.02) translate3d(0,0,0); }
+      50% { transform: scale(1.055) translate3d(-.7%,-.4%,0); }
+      100% { transform: scale(1.035) translate3d(.7%,.5%,0); }
+    }
+
+    @keyframes heroBackgroundMist {
+      0% { transform: translate3d(-1.2%,1%,0) scale(1); opacity: .52; }
+      50% { transform: translate3d(1%,-1.2%,0) scale(1.04); opacity: .78; }
+      100% { transform: translate3d(-.6%,1.5%,0) scale(1.02); opacity: .6; }
+    }
+
+
+    /* Final hero tuning: no logo lighting, mouse-reactive background */
+    #hero-animation {
+      --bg-x: 0px;
+      --bg-y: 0px;
+      --bg-scale: 0;
+      --mist-x: 0px;
+      --mist-y: 0px;
+      --mist-scale: 1.02;
+    }
+
+    #hero-animation .official-logo {
+      filter: brightness(.84) contrast(1.04) saturate(.94) !important;
+      box-shadow: none !important;
+      animation: heroLogoSubtleBreath 8s ease-in-out infinite !important;
+    }
+
+    #hero-animation .hero-logo-stage {
+      filter: none !important;
+      box-shadow: none !important;
+    }
+
+    @keyframes heroLogoSubtleBreath {
+      0%, 100% {
+        transform: translate3d(0,0,0) scale(1);
+        filter: brightness(.84) contrast(1.04) saturate(.94);
+      }
+      50% {
+        transform: translate3d(0,-4px,0) scale(1.012);
+        filter: brightness(.88) contrast(1.06) saturate(.96);
+      }
+    }
+
+    #hero-animation .hero-background-layer {
+      animation: none !important;
+      will-change: transform, filter;
+      transform: translate3d(var(--bg-x), var(--bg-y), 0) scale(calc(1.04 + var(--bg-scale))) !important;
+      filter: brightness(.82) contrast(1.08) saturate(.94) !important;
+      transition: transform .18s ease-out, filter .24s ease-out;
+    }
+
+    #hero-animation .hero-background-layer::before {
+      animation: none !important;
+      will-change: transform, opacity;
+      transform: translate3d(var(--mist-x), var(--mist-y), 0) scale(var(--mist-scale)) !important;
+      transition: transform .22s ease-out, opacity .3s ease-out;
+    }
+
+    #hero-animation .hero-background-layer::after {
+      animation: none !important;
+    }
+
+
+    /* Explore the Realms — brighter card artwork */
+    #realm-grid .realm-card {
+      background-color: rgba(12, 12, 12, .78) !important;
+    }
+
+    #realm-grid .realm-card img,
+    #realm-grid .realm-card picture img,
+    #realm-grid .realm-card video,
+    #realm-grid .realm-card .realm-card-image,
+    #realm-grid .realm-card .realm-image,
+    #realm-grid .realm-card .realm-card-media,
+    #realm-grid .realm-card .card-image,
+    #realm-grid .realm-card [style*="background-image"] {
+      opacity: 1 !important;
+      filter: brightness(1.38) contrast(1.06) saturate(1.08) !important;
+    }
+
+    #realm-grid .realm-card::before {
+      opacity: .16 !important;
+    }
+
+    #realm-grid .realm-card::after {
+      opacity: .32 !important;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,.02) 0%,
+        rgba(0,0,0,.08) 48%,
+        rgba(0,0,0,.62) 100%
+      ) !important;
+    }
+
+    #realm-grid .realm-card:hover img,
+    #realm-grid .realm-card:hover .realm-card-image,
+    #realm-grid .realm-card:hover .realm-image,
+    #realm-grid .realm-card:hover .realm-card-media,
+    #realm-grid .realm-card:hover [style*="background-image"] {
+      filter: brightness(1.52) contrast(1.08) saturate(1.12) !important;
+    }
+
+
+    /* Header navigation only: preserve all background and hero assets */
+    .sister-site-actions { display: none !important; }
+
+    @media (min-width: 981px) {
+      .site-header {
+        grid-template-columns: auto 1fr auto !important;
+      }
+      .desktop-nav {
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        justify-content: center !important;
+        width: max-content !important;
+        max-width: calc(100vw - 330px) !important;
+        gap: clamp(12px, 1.2vw, 23px) !important;
+      }
+      .desktop-nav a {
+        white-space: nowrap !important;
+        font-size: clamp(9px, .74vw, 12px) !important;
+        letter-spacing: .09em !important;
+      }
+      .desktop-nav .sister-nav-link { color: #c9a56f !important; }
+      .menu-button { justify-self: end !important; }
+    }
+
+    .mobile-panel .sister-nav-link { color: #d1ad74 !important; }
+
+
+    /* FINAL HERO POSITION FIX — full-width, centered, directly below fixed header */
+    #hero-animation.hero.section-shell {
+      position: relative !important;
+      width: 100% !important;
+      max-width: none !important;
+      min-height: calc(100vh - 96px) !important;
+      margin: 96px 0 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+      display: block !important;
+      isolation: isolate !important;
+      background: #020202 !important;
+    }
+
+    #hero-animation .hero-background-layer {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 0 !important;
+      background-position: center top !important;
+      background-size: cover !important;
+    }
+
+    #hero-animation .hero-vignette,
+    #hero-animation .hero-smoke,
+    #hero-animation .hero-particles,
+    #hero-animation .hero-static,
+    #hero-animation .hero-scanlines {
+      position: absolute !important;
+      inset: 0 !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
+    }
+
+    #hero-animation .hero-content {
+      position: absolute !important;
+      top: 0 !important;
+      right: 0 !important;
+      left: 0 !important;
+      z-index: 3 !important;
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 12px 24px 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      transform: none !important;
+    }
+
+    #hero-animation .hero-logo-stage {
+      position: relative !important;
+      left: auto !important;
+      right: auto !important;
+      width: min(62vw, 650px) !important;
+      max-width: 650px !important;
+      margin: 0 auto !important;
+      transform-origin: center center !important;
+    }
+
+    #hero-animation .official-logo {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0 auto !important;
+      object-position: center center !important;
+    }
+
+    #hero-animation .hero-status {
+      z-index: 3 !important;
+    }
+
+    @media (max-width: 1180px) and (min-width: 981px) {
+      #hero-animation.hero.section-shell {
+        min-height: calc(100vh - 86px) !important;
+        margin-top: 86px !important;
+      }
+    }
+
+    @media (max-width: 980px) {
+      #hero-animation.hero.section-shell {
+        min-height: calc(100vh - 78px) !important;
+        margin-top: 78px !important;
+      }
+      #hero-animation .hero-content {
+        padding-top: 8px !important;
+      }
+      #hero-animation .hero-logo-stage {
+        width: min(88vw, 560px) !important;
+      }
+    }
+
+
+    /* FINAL HERO CONTAINMENT FIX — centered panel beginning at the absolute top */
+    html, body {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    body > main,
+    main {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    #hero-animation.hero.section-shell {
+      position: relative !important;
+      width: min(calc(100% - 64px), 1180px) !important;
+      max-width: 1180px !important;
+      min-height: 860px !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+      display: block !important;
+      isolation: isolate !important;
+      background: #020202 !important;
+    }
+
+    #hero-animation .hero-background-layer {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 0 !important;
+      background-position: center top !important;
+      background-size: cover !important;
+    }
+
+    #hero-animation .hero-content {
+      position: relative !important;
+      top: 0 !important;
+      right: auto !important;
+      left: auto !important;
+      z-index: 3 !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+      padding: 12px 24px 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      transform: none !important;
+    }
+
+    #hero-animation .hero-logo-stage {
+      width: min(62vw, 650px) !important;
+      max-width: 650px !important;
+      margin: 0 auto !important;
+    }
+
+    @media (max-width: 980px) {
+      #hero-animation.hero.section-shell {
+        width: min(calc(100% - 28px), 760px) !important;
+        min-height: 720px !important;
+        margin: 0 auto !important;
+      }
+      #hero-animation .hero-logo-stage {
+        width: min(86vw, 560px) !important;
+      }
+    }
+
+    @media (max-width: 620px) {
+      #hero-animation.hero.section-shell {
+        width: 100% !important;
+        min-height: 640px !important;
+      }
+    }
+
+
+    /* DEFINITIVE HERO GEOMETRY — compact, centered, flush to page top */
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    body > main,
+    main {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    #hero-animation.hero.section-shell {
+      position: relative !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: min(calc(100% - 64px), 1180px) !important;
+      max-width: 1180px !important;
+      height: min(72vw, 720px) !important;
+      min-height: 620px !important;
+      max-height: 720px !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+      display: block !important;
+      isolation: isolate !important;
+      background: transparent !important;
+      transform: none !important;
+    }
+
+    #hero-animation .hero-background-layer {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 0 !important;
+      background-image:
+        radial-gradient(circle at center, rgba(0,0,0,.04) 0%, rgba(0,0,0,.16) 58%, rgba(0,0,0,.38) 100%),
+        url('assets/hero-background-new.png') !important;
+      background-repeat: no-repeat !important;
+      background-position: center top !important;
+      background-size: 100% 100% !important;
+      transform-origin: center center !important;
+    }
+
+    #hero-animation .hero-content {
+      position: absolute !important;
+      top: 18px !important;
+      right: 0 !important;
+      bottom: auto !important;
+      left: 0 !important;
+      z-index: 4 !important;
+      width: 100% !important;
+      height: auto !important;
+      margin: 0 !important;
+      padding: 0 24px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: 0 !important;
+      transform: none !important;
+    }
+
+    #hero-animation .hero-logo-stage {
+      position: relative !important;
+      top: 0 !important;
+      left: auto !important;
+      right: auto !important;
+      width: min(45vw, 500px) !important;
+      max-width: 500px !important;
+      height: auto !important;
+      aspect-ratio: 1 / 1 !important;
+      margin: 0 auto !important;
+      transform-origin: center center !important;
+    }
+
+    #hero-animation .official-logo {
+      position: relative !important;
+      inset: auto !important;
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
+      margin: 0 auto !important;
+      object-fit: contain !important;
+      object-position: center top !important;
+    }
+
+    #hero-animation .hero-manifesto {
+      margin-top: -8px !important;
+    }
+
+    #hero-animation .hero-status {
+      z-index: 5 !important;
+    }
+
+    @media (max-width: 980px) {
+      #hero-animation.hero.section-shell {
+        width: min(calc(100% - 28px), 760px) !important;
+        height: 650px !important;
+        min-height: 650px !important;
+        max-height: 650px !important;
+      }
+      #hero-animation .hero-content {
+        top: 10px !important;
+        padding: 0 14px !important;
+      }
+      #hero-animation .hero-logo-stage {
+        width: min(68vw, 440px) !important;
+        max-width: 440px !important;
+      }
+    }
+
+    @media (max-width: 620px) {
+      #hero-animation.hero.section-shell {
+        width: 100% !important;
+        height: 580px !important;
+        min-height: 580px !important;
+        max-height: 580px !important;
+      }
+      #hero-animation .hero-logo-stage {
+        width: min(82vw, 390px) !important;
+      }
+    }
+
+
+    /* FINAL HERO FRAME — flush with browser top and aligned to main two-column width */
+    :root { --pb-header-height: 96px; }
+
+    body > main,
+    main {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    #hero-animation.hero.section-shell {
+      top: auto !important;
+      left: auto !important;
+      width: min(calc(100% - 56px), 1680px) !important;
+      max-width: 1680px !important;
+      height: clamp(760px, 51vw, 920px) !important;
+      min-height: 760px !important;
+      max-height: 920px !important;
+      margin: calc(-1 * var(--pb-header-height)) auto 0 !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      overflow: hidden !important;
+    }
+
+    #hero-animation .hero-background-layer {
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      background-position: center top !important;
+      background-size: cover !important;
+    }
+
+    #hero-animation .hero-content {
+      top: var(--pb-header-height) !important;
+      padding-top: 8px !important;
+    }
+
+    #hero-animation .hero-logo-stage {
+      width: min(40vw, 620px) !important;
+      max-width: 620px !important;
+    }
+
+    @media (max-width: 1180px) {
+      :root { --pb-header-height: 86px; }
+      #hero-animation.hero.section-shell {
+        width: min(calc(100% - 36px), 1120px) !important;
+        height: clamp(700px, 70vw, 820px) !important;
+        min-height: 700px !important;
+        max-height: 820px !important;
+      }
+      #hero-animation .hero-logo-stage {
+        width: min(54vw, 540px) !important;
+      }
+    }
+
+    @media (max-width: 980px) {
+      :root { --pb-header-height: 78px; }
+      #hero-animation.hero.section-shell {
+        width: calc(100% - 24px) !important;
+        height: 700px !important;
+        min-height: 700px !important;
+        max-height: 700px !important;
+      }
+      #hero-animation .hero-content {
+        top: var(--pb-header-height) !important;
+      }
+      #hero-animation .hero-logo-stage {
+        width: min(72vw, 480px) !important;
+      }
+    }
+
+    @media (max-width: 620px) {
+      #hero-animation.hero.section-shell {
+        width: 100% !important;
+        height: 620px !important;
+        min-height: 620px !important;
+        max-height: 620px !important;
+      }
+      #hero-animation .hero-logo-stage {
+        width: min(88vw, 420px) !important;
+      }
+    }
+
+
+    /* TRUE FLUSH-TOP FIX — remove every inherited offset above the hero */
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    body > main,
+    main {
+      position: relative !important;
+      top: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      transform: none !important;
+    }
+
+    main > #hero-animation.hero.section-shell {
+      position: relative !important;
+      top: 0 !important;
+      margin-top: var(--pb-hero-pull-up, 0px) !important;
+      transform: none !important;
+    }
+
+
+    /* FINAL WIDTH MATCH — hero panel exactly matches Explore the Realms panel */
+    #hero-animation.hero.section-shell {
+      width: var(--pb-realms-width, calc(100% - 56px)) !important;
+      max-width: none !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    @media (max-width: 1180px) {
+      #hero-animation.hero.section-shell {
+        width: var(--pb-realms-width, calc(100% - 36px)) !important;
+      }
+    }
+
+    @media (max-width: 980px) {
+      #hero-animation.hero.section-shell {
+        width: var(--pb-realms-width, calc(100% - 24px)) !important;
+      }
+    }
+
+    @media (max-width: 620px) {
+      #hero-animation.hero.section-shell {
+        width: var(--pb-realms-width, 100%) !important;
+      }
+    }
+
+
+    /* REMOVE GAP BETWEEN HERO AND EXPLORE THE REALMS */
+    #hero-animation.hero.section-shell {
+      margin-bottom: 0 !important;
+    }
+
+    #hero-animation.hero.section-shell + .realms.section-shell {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    #hero-animation.hero.section-shell + .realms.section-shell > .section-heading {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    /* Collapse every possible inherited separator between these adjacent panels. */
+    main > #hero-animation + .realms,
+    main > #hero-animation + section.realms {
+      border-top-width: 0 !important;
+      row-gap: 0 !important;
+      gap: 0 !important;
+      transform: none !important;
+    }
+
+  </style>
 </head>
 <body>
+  <div class="fixed-page-background" aria-hidden="true"></div>
   <div class="page-noise" aria-hidden="true"></div>
   <div class="cursor-glow" aria-hidden="true"></div>
 
@@ -782,12 +1904,9 @@
       <a href="#motion">Motion</a>
       <a href="#machines">Machines</a>
       <a href="#about">About</a>
+      <a class="sister-nav-link" href="https://paulboothart.com">PaulBoothArt.com</a>
+      <a class="sister-nav-link" href="https://paulboothbrand.com">PaulBoothBrand.com</a>
     </nav>
-
-    <div class="sister-site-actions" aria-label="Sister sites">
-      <a class="sister-site-button" href="https://paulboothart.com">PaulBoothArt.com</a>
-      <a class="sister-site-button" href="https://paulboothbrand.com">PaulBoothBrand.com</a>
-    </div>
     <button class="menu-button" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -799,6 +1918,8 @@
     <a href="#motion">Motion Systems</a>
     <a href="#machines">Intelligent Machines</a>
     <a href="#about">About Paul Booth</a>
+    <a class="sister-nav-link" href="https://paulboothart.com">PaulBoothArt.com</a>
+    <a class="sister-nav-link" href="https://paulboothbrand.com">PaulBoothBrand.com</a>
   </div>
 
   <main>
@@ -811,35 +1932,24 @@
       <canvas class="hero-static" aria-hidden="true"></canvas>
       <div class="hero-scanlines" aria-hidden="true"></div>
 
-      <div class="hero-logo-stage" aria-label="PaulBooth.ai">
-        <div class="hero-logo-glow" aria-hidden="true"></div>
-        <div class="hero-orb-cluster" aria-hidden="true">
-          <span class="hero-orb orb-one"></span>
-          <span class="hero-orb orb-two"></span>
-          <span class="hero-orb orb-three"></span>
-          <span class="hero-orb orb-four"></span>
-          <span class="hero-orb orb-five"></span>
-          <span class="hero-orb orb-six"></span>
-          <span class="hero-orb orb-seven"></span>
-          <span class="hero-orb orb-eight"></span>
-          <span class="hero-orb orb-nine"></span>
-          <span class="hero-orb orb-ten"></span>
-          <span class="hero-orb orb-eleven"></span>
-          <span class="hero-orb orb-twelve"></span>
-          <span class="hero-orb orb-thirteen"></span>
-          <span class="hero-orb orb-fourteen"></span>
-          <span class="hero-orb orb-fifteen"></span>
-          <span class="hero-orb orb-sixteen"></span>
-          <span class="hero-orb orb-seventeen"></span>
-          <span class="hero-orb orb-eighteen"></span>
-          <span class="hero-orb orb-nineteen"></span>
-          <span class="hero-orb orb-twenty"></span>
-        </div>
-        <img class="official-logo" src="assets/paulbooth-ai-logo-transparent.png" alt="PaulBooth.ai official biomechanical logo" />
-        <div class="hero-logo-sweep" aria-hidden="true"></div>
-      </div>
-
       <div class="hero-content">
+        <div class="hero-logo-stage" aria-label="PaulBooth.ai hero emblem">
+          <div class="logo-smoke logo-smoke-a" aria-hidden="true"></div>
+          <div class="logo-smoke logo-smoke-b" aria-hidden="true"></div>
+          <div class="logo-orb-cluster" aria-hidden="true">
+            <span class="fire-orb orb-1"></span>
+            <span class="fire-orb orb-2"></span>
+            <span class="fire-orb orb-3"></span>
+            <span class="fire-orb orb-4"></span>
+            <span class="fire-orb orb-5"></span>
+            <span class="fire-orb orb-6"></span>
+            <span class="fire-orb orb-7"></span>
+            <span class="fire-orb orb-8"></span>
+            <span class="fire-orb orb-9"></span>
+            <span class="fire-orb orb-10"></span>
+          </div>
+          <img class="official-logo" src="assets/hero-logo-new.png" alt="PaulBooth.ai biomechanical logo" />
+        </div>
         <p class="hero-manifesto">Artificial Intelligence. <span>Biomechanical Design.</span> Digital Evolution.</p>
       </div>
 
@@ -935,87 +2045,9 @@
   </footer>
 
   <script src="content.js?v=20260804-vault-removed"></script>
-  <script src="script.js?v=20260730-youtube-overlays-restored-main-universal"></script>
+  <script src="script.js?v=20260804-guaranteed-youtube-overlays-v2"></script>
   <script src="visions-galleries.js"></script>
   <script src="image-protection.js"></script>
-
-  <script id="hero-logo-hover-sound">
-    (() => {
-      "use strict";
-
-      const stage = document.querySelector(".hero-logo-stage");
-      if (!stage) return;
-
-      const sound = new Audio("assets/audio/Bckgrnd01.mp3");
-      sound.preload = "auto";
-      sound.volume = 0.28;
-
-      let unlocked = false;
-      let lastPlayedAt = 0;
-      const cooldownMs = 1800;
-
-      const unlockAudio = async () => {
-        if (unlocked) return true;
-
-        try {
-          const originalVolume = sound.volume;
-          sound.volume = 0;
-          await sound.play();
-          sound.pause();
-          sound.currentTime = 0;
-          sound.volume = originalVolume;
-          unlocked = true;
-          return true;
-        } catch {
-          sound.volume = 0.28;
-          return false;
-        }
-      };
-
-      const playSound = async ({ force = false } = {}) => {
-        const now = Date.now();
-        if (!force && now - lastPlayedAt < cooldownMs) return;
-
-        if (!unlocked) {
-          const ready = await unlockAudio();
-          if (!ready && !force) return;
-        }
-
-        try {
-          sound.pause();
-          sound.currentTime = 0;
-          sound.volume = 0.28;
-          await sound.play();
-          unlocked = true;
-          lastPlayedAt = now;
-        } catch {
-          /* A browser may require a click or tap before hover audio is allowed. */
-        }
-      };
-
-      stage.addEventListener("mouseenter", () => playSound());
-
-      stage.addEventListener("pointerup", (event) => {
-        if (event.pointerType === "touch" || event.pointerType === "pen") {
-          playSound({ force: true });
-        }
-      });
-
-      stage.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          playSound({ force: true });
-        }
-      });
-
-      stage.tabIndex = 0;
-      stage.setAttribute("role", "button");
-      stage.setAttribute("aria-label", "Play PaulBooth.ai logo sound");
-
-      document.addEventListener("pointerdown", unlockAudio, { once: true, passive: true });
-      document.addEventListener("keydown", unlockAudio, { once: true });
-    })();
-  </script>
 
 
   <script id="pb-video-enlarge-system">
@@ -1095,167 +2127,134 @@
   </script>
 
 
-  <script id="pb-universal-youtube-overlay-script">
+  <script id="pb-hero-mouse-reactive-bg">
     (() => {
-      "use strict";
+      const hero = document.getElementById('hero-animation');
+      const bg = hero?.querySelector('.hero-background-layer');
+      if (!hero || !bg) return;
 
-      const EMBED_SELECTOR = ".pb-youtube-embed";
-      const YT_PATTERNS = [
-        /youtube(?:-nocookie)?\.com\/embed\/([A-Za-z0-9_-]{6,})/i,
-        /youtu\.be\/([A-Za-z0-9_-]{6,})/i,
-        /youtube\.com\/shorts\/([A-Za-z0-9_-]{6,})/i,
-        /youtube\.com.*[?&]v=([A-Za-z0-9_-]{6,})/i,
-        /ytimg\.com\/vi(?:_webp)?\/([A-Za-z0-9_-]{6,})\//i
-      ];
+      let mx = 0, my = 0, tx = 0, ty = 0;
+      let active = false;
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      const extractIdFromText = (value) => {
-        if (!value || typeof value !== "string") return "";
-        for (const pattern of YT_PATTERNS) {
-          const match = value.match(pattern);
-          if (match && match[1]) return match[1];
-        }
-        return "";
+      const setTargetFromEvent = (event) => {
+        const rect = hero.getBoundingClientRect();
+        const px = (event.clientX - rect.left) / rect.width;
+        const py = (event.clientY - rect.top) / rect.height;
+        tx = (px - 0.5) * 22;
+        ty = (py - 0.5) * 18;
       };
 
-      const inferYoutubeId = (node) => {
-        if (!node) return "";
-        const directCandidates = [
-          node.dataset.youtubeId,
-          node.getAttribute("data-youtube-id"),
-          node.getAttribute("data-video-id"),
-          node.getAttribute("data-youtube")
-        ];
-        for (const candidate of directCandidates) {
-          const id = extractIdFromText(candidate || "") || (/^[A-Za-z0-9_-]{6,}$/.test(candidate || "") ? (candidate || "") : "");
-          if (id) return id;
-        }
-        const all = node.querySelectorAll("iframe, a, img, source, [data-youtube-id], [data-video-id], [href], [src]");
-        for (const el of all) {
-          const values = [
-            el.getAttribute && el.getAttribute("src"),
-            el.getAttribute && el.getAttribute("href"),
-            el.getAttribute && el.getAttribute("data-youtube-id"),
-            el.getAttribute && el.getAttribute("data-video-id"),
-            el.dataset && el.dataset.youtubeId,
-            el.dataset && el.dataset.videoId
-          ];
-          for (const value of values) {
-            const id = extractIdFromText(value || "") || (/^[A-Za-z0-9_-]{6,}$/.test(value || "") ? (value || "") : "");
-            if (id) return id;
-          }
-        }
-        return "";
-      };
-
-      const inferPoster = (node, youtubeId) => {
-        if (!node) return youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg` : "";
-        const img = node.querySelector("img");
-        if (img && img.src && !/play-button|icon/i.test(img.src)) return img.src;
-        const source = node.querySelector("iframe, a, [src], [href]");
-        if (source) {
-          const src = source.getAttribute("src") || source.getAttribute("href") || "";
-          if (/ytimg\.com/i.test(src)) return src;
-        }
-        return youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg` : "";
-      };
-
-      const escapeHtml = (value) => String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
-
-      const attachFullscreen = (container, button) => {
-        if (!container || !button) return;
-        button.addEventListener("click", async (event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          try {
-            if (document.fullscreenElement || document.webkitFullscreenElement) {
-              if (document.exitFullscreen) await document.exitFullscreen();
-              else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-              return;
-            }
-            if (container.requestFullscreen) await container.requestFullscreen();
-            else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen();
-          } catch (error) {
-            console.warn("Unable to enlarge video:", error);
-          }
-        });
-      };
-
-      const prepareEmbed = (node) => {
-        if (!(node instanceof Element)) return;
-        if (node.dataset.pbUniversalYoutubeReady === "true") return;
-
-        const youtubeId = inferYoutubeId(node);
-        if (!youtubeId) return;
-
-        const poster = inferPoster(node, youtubeId);
-        node.dataset.pbUniversalYoutubeReady = "true";
-        node.classList.add("pb-universal-youtube-overlay-ready");
-        node.setAttribute("data-youtube-id", youtubeId);
-        node.removeAttribute("data-pb-enlarge-installed");
-        delete node.dataset.pbEnlargeInstalled;
-
-        node.innerHTML = `
-          <button type="button" class="pb-universal-youtube-overlay" aria-label="Play video">
-            <img src="${escapeHtml(poster)}" alt="Video preview">
-            <span class="pb-universal-youtube-play" aria-hidden="true"></span>
-          </button>
-          <iframe
-            class="pb-universal-youtube-iframe"
-            title="YouTube video player"
-            src="about:blank"
-            data-src="https://www.youtube-nocookie.com/embed/${escapeHtml(youtubeId)}?autoplay=1&rel=0&modestbranding=1&playsinline=1"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-          <button type="button" class="pb-universal-enlarge" aria-label="Enlarge video" title="Enlarge video">⛶</button>
-        `;
-
-        const overlay = node.querySelector('.pb-universal-youtube-overlay');
-        const iframe = node.querySelector('.pb-universal-youtube-iframe');
-        const enlarge = node.querySelector('.pb-universal-enlarge');
-
-        if (overlay && iframe) {
-          overlay.addEventListener('click', (event) => {
-            event.preventDefault();
-            if (!iframe.src || iframe.src === 'about:blank') {
-              iframe.src = iframe.dataset.src || iframe.src;
-            }
-            node.classList.add('is-playing');
-          }, { once: true });
-        }
-
-        attachFullscreen(node, enlarge);
-      };
-
-      const scan = (root = document) => {
-        if (root.matches && root.matches(EMBED_SELECTOR)) prepareEmbed(root);
-        if (root.querySelectorAll) root.querySelectorAll(EMBED_SELECTOR).forEach(prepareEmbed);
-      };
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => scan());
-      } else {
-        scan();
-      }
-
-      const observer = new MutationObserver((mutations) => {
-        for (const mutation of mutations) {
-          mutation.addedNodes.forEach((node) => {
-            if (!(node instanceof Element)) return;
-            scan(node);
-          });
-        }
+      hero.addEventListener('mousemove', (event) => {
+        active = true;
+        setTargetFromEvent(event);
       });
-      observer.observe(document.documentElement, { childList: true, subtree: true });
+
+      hero.addEventListener('mouseenter', (event) => {
+        active = true;
+        setTargetFromEvent(event);
+      });
+
+      hero.addEventListener('mouseleave', () => {
+        active = false;
+        tx = 0;
+        ty = 0;
+      });
+
+      hero.addEventListener('touchstart', (event) => {
+        if (!event.touches?.[0]) return;
+        active = true;
+        setTargetFromEvent(event.touches[0]);
+      }, { passive: true });
+
+      hero.addEventListener('touchmove', (event) => {
+        if (!event.touches?.[0]) return;
+        active = true;
+        setTargetFromEvent(event.touches[0]);
+      }, { passive: true });
+
+      hero.addEventListener('touchend', () => {
+        active = false;
+        tx = 0;
+        ty = 0;
+      }, { passive: true });
+
+      const start = performance.now();
+      const tick = (now) => {
+        const t = (now - start) / 1000;
+        const driftX = prefersReduced ? 0 : Math.sin(t * 0.38) * 7 + Math.sin(t * 0.17 + 1.3) * 4;
+        const driftY = prefersReduced ? 0 : Math.cos(t * 0.31) * 5 + Math.sin(t * 0.21) * 3;
+
+        mx += ((active ? tx : 0) - mx) * 0.08;
+        my += ((active ? ty : 0) - my) * 0.08;
+
+        const bgX = driftX + mx;
+        const bgY = driftY + my;
+        const mistX = bgX * -0.38;
+        const mistY = bgY * -0.28;
+        const scale = prefersReduced ? 0.015 : 0.015 + ((Math.sin(t * 0.45) + 1) * 0.5) * 0.018;
+        const mistScale = prefersReduced ? 1.02 : 1.02 + ((Math.cos(t * 0.52) + 1) * 0.5) * 0.04;
+
+        hero.style.setProperty('--bg-x', `${bgX.toFixed(2)}px`);
+        hero.style.setProperty('--bg-y', `${bgY.toFixed(2)}px`);
+        hero.style.setProperty('--bg-scale', scale.toFixed(4));
+        hero.style.setProperty('--mist-x', `${mistX.toFixed(2)}px`);
+        hero.style.setProperty('--mist-y', `${mistY.toFixed(2)}px`);
+        hero.style.setProperty('--mist-scale', mistScale.toFixed(4));
+
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
     })();
   </script>
 
 
+  <script id="pb-force-hero-to-browser-top">
+    (() => {
+      const hero = document.getElementById('hero-animation');
+      if (!hero) return;
+
+      const placeHeroAtTop = () => {
+        /* Use negative margin instead of transform so the hero moves in document
+           flow and does not leave an invisible spacer below it. */
+        hero.style.setProperty('--pb-hero-pull-up', '0px');
+        const top = hero.getBoundingClientRect().top;
+        hero.style.setProperty('--pb-hero-pull-up', `${-Math.max(0, top)}px`);
+      };
+
+      placeHeroAtTop();
+      requestAnimationFrame(placeHeroAtTop);
+      window.addEventListener('load', placeHeroAtTop, { once: true });
+      window.addEventListener('resize', placeHeroAtTop);
+    })();
+  </script>
+
+
+  <script id="pb-match-hero-to-realms-width">
+    (() => {
+      const hero = document.getElementById('hero-animation');
+      const realms = document.querySelector('.realms.section-shell');
+      if (!hero || !realms) return;
+
+      const syncWidth = () => {
+        const width = realms.getBoundingClientRect().width;
+        if (width > 0) {
+          hero.style.setProperty('--pb-realms-width', `${Math.round(width)}px`);
+        }
+      };
+
+      syncWidth();
+      window.addEventListener('load', syncWidth, { once: true });
+      window.addEventListener('resize', syncWidth, { passive: true });
+      if ('ResizeObserver' in window) {
+        new ResizeObserver(syncWidth).observe(realms);
+      }
+    })();
+  </script>
+
+  <script src="motion-poster-frames-v5.js?v=20260805-2334-external-youtube"></script>
+  <script src="intelligent-machines-restore-v2.js?v=20260805-2318-error153"></script>
+
+<!-- PB MOTION POSTER BUILD: 20260805-2306-ACTUAL -->
 </body>
 </html>
