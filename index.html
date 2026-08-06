@@ -1929,6 +1929,33 @@
       transform: none !important;
     }
 
+
+    /* =========================================================
+       FINAL BROWSER-TOP HERO LOCK
+       Forces the hero panel to the absolute top of document flow
+       even when older header-spacing rules remain in styles.css.
+       ========================================================= */
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    body > main {
+      position: relative !important;
+      inset: auto !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      transform: none !important;
+    }
+
+    body > main > #hero-animation.hero.section-shell {
+      position: relative !important;
+      top: 0 !important;
+      margin-top: var(--pb-hero-document-offset, 0px) !important;
+      margin-block-start: var(--pb-hero-document-offset, 0px) !important;
+      transform: none !important;
+    }
+
   </style>
 </head>
 <body>
@@ -2254,15 +2281,30 @@
 
   <script id="pb-force-hero-to-browser-top">
     (() => {
-      const hero = document.getElementById('hero-animation');
+      "use strict";
+
+      const hero = document.getElementById("hero-animation");
       if (!hero) return;
 
-      /* Keep the hero at the top of normal document flow. The fixed header
-         overlays it and therefore must not create a spacer above the panel. */
-      hero.style.setProperty('--pb-hero-pull-up', '0px');
-      hero.style.setProperty('margin-top', '0px', 'important');
-      hero.style.setProperty('top', '0px', 'important');
-      hero.style.setProperty('transform', 'none', 'important');
+      const lockHeroToDocumentTop = () => {
+        /* Remove any prior correction, measure the hero's real document
+           position, then pull it upward in normal flow by that amount. */
+        hero.style.setProperty("--pb-hero-document-offset", "0px");
+        hero.style.setProperty("margin-top", "0px", "important");
+
+        const documentTop = hero.getBoundingClientRect().top + window.scrollY;
+        const correction = -Math.max(0, Math.round(documentTop));
+
+        hero.style.setProperty("--pb-hero-document-offset", `${correction}px`);
+        hero.style.setProperty("margin-top", `${correction}px`, "important");
+        hero.style.setProperty("top", "0px", "important");
+        hero.style.setProperty("transform", "none", "important");
+      };
+
+      lockHeroToDocumentTop();
+      requestAnimationFrame(lockHeroToDocumentTop);
+      window.addEventListener("load", lockHeroToDocumentTop, { once: true });
+      window.addEventListener("resize", lockHeroToDocumentTop, { passive: true });
     })();
   </script>
 
