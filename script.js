@@ -1,4 +1,4 @@
-// Manifest-driven media system.
+﻿// Manifest-driven media system.
 // The same content/motion records power both Motion Systems and Content Repository.
 (() => {
   "use strict";
@@ -227,7 +227,7 @@
             ${item.date ? `<span>${escapeHtml(item.date)}</span>` : ""}
             ${item.status ? `<span>${escapeHtml(item.status)}</span>` : ""}
           </div>` : ""}
-          ${directLink ? `<a class="text-link" href="${directLink}" target="_self" rel="noopener">${actionLabel} <span>→</span></a>` : ""}
+          ${directLink ? `<a class="text-link" href="${directLink}" target="_self" rel="noopener">${actionLabel} <span>â†’</span></a>` : ""}
         </div>
       </article>`;
     }).join("");
@@ -267,7 +267,7 @@
         <span class="machine-index">${String(index + 1).padStart(2, "0")}</span>
         <h3>${escapeHtml(item.title)}</h3>
         ${item.description ? `<p>${escapeHtml(item.description)}</p>` : ""}
-        ${directLink ? `<a href="${directLink}" target="_self" rel="noopener">${actionLabel} <span>→</span></a>` : ""}
+        ${directLink ? `<a href="${directLink}" target="_self" rel="noopener">${actionLabel} <span>â†’</span></a>` : ""}
       </article>`;
     }).join("");
   };
@@ -312,7 +312,7 @@
       grid.innerHTML = visibleItems.map((item) => {
         const directLink = item.link ? escapeHtml(item.link) : "";
         const actionMarkup = directLink
-          ? `<a href="${directLink}" target="_self" rel="noopener">Visit Project →</a>`
+          ? `<a href="${directLink}" target="_self" rel="noopener">Visit Project â†’</a>`
           : "";
 
         const orientation = item.videoOrientation === "vertical" ? "vertical" : "landscape";
@@ -404,7 +404,7 @@ const realmTemplate = (realm) => `
       <span class="realm-number">${realm.number}</span>
       <h3>${realm.title}</h3>
       <p>${realm.subtitle}</p>
-      <span class="card-arrow">→</span>
+      <span class="card-arrow">â†’</span>
     </div>
   </a>`;
 
@@ -421,7 +421,7 @@ if (experimentList && Array.isArray(data?.experiments)) {
       <span class="experiment-code">${item.code || ""}</span>
       <div><h3>${item.title || "Untitled Experiment"}</h3><p>${item.description || ""}</p></div>
       <span class="experiment-status">${item.status || ""}</span>
-      ${item.link ? `<a class="experiment-arrow" href="${item.link}" aria-label="Open ${item.title || "experiment"}">→</a>` : `<span aria-hidden="true">→</span>`}
+      ${item.link ? `<a class="experiment-arrow" href="${item.link}" aria-label="Open ${item.title || "experiment"}">â†’</a>` : `<span aria-hidden="true">â†’</span>`}
     </article>`).join('');
 }
 const menuButton = document.querySelector('.menu-button');
@@ -455,12 +455,13 @@ window.addEventListener('pointermove', (event) => {
   glow.style.transform = `translate(${event.clientX - 260}px, ${event.clientY - 260}px)`;
 });
 
-document.querySelector('.signal-form').addEventListener('submit', (event) => {
+const signalForm = document.querySelector('.signal-form');
+if (signalForm) signalForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const input = event.currentTarget.querySelector('input');
   const button = event.currentTarget.querySelector('button');
   if (!input.value.trim()) return input.focus();
-  button.innerHTML = 'Signal received <span>✓</span>';
+  button.innerHTML = 'Signal received <span>âœ“</span>';
   input.value = '';
 });
 
@@ -672,3 +673,4 @@ document.querySelector('#year').textContent = new Date().getFullYear();
     observer.disconnect();
   }, { once: true });
 })();
+
