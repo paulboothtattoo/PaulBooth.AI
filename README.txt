@@ -1,12 +1,20 @@
-PAULBOOTH.AI — YOUTUBE RESTORE PATCH
+PaulBooth.ai — Mobile title overflow fix
 
-This smaller ZIP contains only the files required to restore the YouTube players.
+This safely modifies the CURRENT local index.html in place.
+It does not replace the page with an older copy.
 
-Copy everything in this ZIP into the root of your current PaulBooth.ai site folder and allow Windows to replace matching files.
+It overrides the old mobile/title rules that forced:
+white-space: nowrap
+overflow: visible
 
-It does NOT include your large media folders, images, galleries, or project assets, so it downloads quickly and does not overwrite them.
+The patch allows titles to wrap naturally within the phone width,
+prevents horizontal page overflow, and keeps desktop styling unchanged.
 
-After copying:
-1. Restart the Python server.
-2. Open http://localhost:8080
-3. Press Ctrl+F5.
+Run from the PaulBooth.ai repo root:
+
+powershell -ExecutionPolicy Bypass -File ".\PaulBooth.ai-mobile-title-overflow-fix\apply-mobile-title-fix.ps1" -SiteRoot "."
+
+Then:
+git add index.html
+git commit -m "Fix mobile title overflow"
+git push origin main
