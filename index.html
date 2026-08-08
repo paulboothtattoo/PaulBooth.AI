@@ -2454,6 +2454,63 @@
 })();
 </script>
 
+  <script id="pbai-hero-hover-pulse03">
+  (() => {
+    const init = () => {
+      const heroLogo = document.querySelector('#hero-animation .hero-logo-stage');
+      if (!heroLogo || heroLogo.dataset.pulse03Bound === 'true') return;
+      heroLogo.dataset.pulse03Bound = 'true';
+
+      const pulse = new Audio('assets/audio/pulse03.mp3?v=20260808a');
+      pulse.preload = 'auto';
+      pulse.volume = 1;
+
+      const playPulse = () => {
+        try {
+          pulse.pause();
+          pulse.currentTime = 0;
+          pulse.muted = false;
+          const result = pulse.play();
+          if (result && typeof result.catch === 'function') result.catch(() => {});
+        } catch (_) {}
+      };
+
+      heroLogo.addEventListener('mouseenter', playPulse);
+
+      // Prime the media element after the visitor's first real interaction so
+      // browsers that gate audio can allow later hover playback.
+      const unlock = () => {
+        try {
+          pulse.muted = true;
+          const result = pulse.play();
+          if (result && typeof result.then === 'function') {
+            result.then(() => {
+              pulse.pause();
+              pulse.currentTime = 0;
+              pulse.muted = false;
+            }).catch(() => { pulse.muted = false; });
+          } else {
+            pulse.pause();
+            pulse.currentTime = 0;
+            pulse.muted = false;
+          }
+        } catch (_) { pulse.muted = false; }
+        window.removeEventListener('pointerdown', unlock, true);
+        window.removeEventListener('keydown', unlock, true);
+      };
+
+      window.addEventListener('pointerdown', unlock, { capture: true, once: true });
+      window.addEventListener('keydown', unlock, { capture: true, once: true });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
+  })();
+  </script>
+
 </body>
 </html>
 
