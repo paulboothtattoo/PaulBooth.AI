@@ -2607,17 +2607,65 @@ video::-webkit-media-controls-enclosure {
   gap: clamp(14px, 1.5vw, 34px);
 }
 
-/* Between the breakpoint where the nav appears and the width where it
-   comfortably fits, tighten it rather than dropping links. Keeps all
-   seven destinations reachable, including the two sister sites. */
-@media (min-width: 1151px) and (max-width: 1340px) {
+/* -----------------------------------------------------------------
+   Nav breakpoint: 1150px -> 1600px
+   -----------------------------------------------------------------
+   .desktop-nav inherits font-display (Michroma) from the group rule
+   above. Michroma averages 1.013em per character -- roughly 1.6x a
+   normal sans -- so the seven nav items measure 1070px of text before
+   any gaps. With the brand block at 256px, the header needs ~1558px
+   and does not fit until about 1560px.
+
+   That is why the label collided with "EXPERIMENTS" on ordinary
+   laptops: the nav appeared at 1150px but could not fit until 1560px.
+   No amount of tightening recovers 358px, so the menu button now
+   covers the whole range instead.
+
+   The mobile panel's positioning lives inside the 1150px query and
+   .mobile-panel is display:none at base, so those rules are restated
+   here. Below 1150px both blocks apply and set identical values.
+   Deliberately scoped to the nav only -- .realm-grid, .project-grid
+   and .about keep their own 1150px breakpoint. */
+@media (max-width: 1600px) {
   .desktop-nav {
-    gap: 14px;
+    display: none;
   }
 
-  .desktop-nav a {
-    font-size: 11px;
-    letter-spacing: .12em;
+  .site-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .menu-button {
+    display: block;
+    justify-self: end;
+  }
+
+  .mobile-panel {
+    position: fixed;
+    z-index: 49;
+    top: 76px;
+    right: 0;
+    width: min(370px, 90vw);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: rgba(7, 8, 8, .97);
+    border-left: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    transform: translateX(105%);
+    transition: .3s;
+  }
+
+  .mobile-panel.open {
+    transform: none;
+  }
+
+  .mobile-panel a {
+    padding: 15px;
+    border-bottom: 1px solid #222;
+    text-transform: uppercase;
+    letter-spacing: .13em;
   }
 }
 
