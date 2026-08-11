@@ -2711,3 +2711,165 @@ video::-webkit-media-controls-enclosure {
 .hero-manifesto {
   font-weight: 400;
 }
+
+
+/* =========================================================
+   CONTACT SECTION
+   Two-column on desktop, stacked on narrow screens. Palette
+   follows the site tokens so it reads as part of the whole.
+   ========================================================= */
+.contact {
+  padding: 45px;
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 48px;
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(90deg, #0b0c0c, #080909);
+}
+
+.contact-intro h2 {
+  margin: 0 0 14px;
+}
+
+.contact-intro .lead {
+  color: var(--bone);
+  margin-bottom: 16px;
+}
+
+.contact-intro p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.contact-intro a {
+  color: var(--bronze-light);
+  border-bottom: 1px solid rgba(179, 140, 81, .4);
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--bronze-light);
+  font-family: var(--font-tech);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.contact-form .wide {
+  grid-column: 1 / -1;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 13px 15px;
+  border: 1px solid var(--line);
+  background: rgba(4, 5, 5, .82);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 16px;
+  outline: none;
+  transition: border-color .25s, box-shadow .25s;
+}
+
+.contact-form textarea {
+  min-height: 150px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: var(--bronze-light);
+  box-shadow: 0 0 0 3px rgba(142, 109, 61, .16);
+}
+
+.contact-form button {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.contact-form button[disabled] {
+  opacity: .62;
+  cursor: progress;
+}
+
+/* Honeypot: off-screen rather than display:none, which bots skip. */
+.contact-form .pb-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.contact-form [data-pb-status] {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-family: var(--font-tech);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.contact-form [data-pb-status]:empty {
+  display: none;
+}
+
+.contact-form [data-pb-status="working"] {
+  color: var(--muted);
+}
+
+.contact-form [data-pb-status="success"] {
+  padding: 14px 16px;
+  border: 1px solid rgba(126, 176, 116, .6);
+  background: rgba(38, 62, 34, .38);
+  color: #cfe8c6;
+}
+
+.contact-form [data-pb-status="error"] {
+  padding: 14px 16px;
+  border: 1px solid rgba(200, 96, 72, .62);
+  background: rgba(74, 26, 20, .42);
+  color: #f2c3b4;
+}
+
+@media (max-width: 1100px) {
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 700px) {
+  .contact {
+    padding: 32px 20px;
+  }
+
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form .wide,
+  .contact-form button {
+    grid-column: 1;
+  }
+}
