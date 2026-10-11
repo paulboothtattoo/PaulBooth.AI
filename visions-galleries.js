@@ -517,6 +517,13 @@
   const filenameFromPath = (path = "") => decodeURIComponent(String(path).split("/").pop() || "");
   const cleanAlt = (filename = "") => filename.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ").trim() || "Gallery artwork";
 
+  // Grid cards show content/visual-work/thumbs/<name>.webp (480px). New artwork
+  // without a thumbnail falls back to the full file via onerror.
+  const thumbnailFor = (src = "") => {
+    const match = String(src).match(/^(.*\/)?([^/]+)\.[^./]+$/);
+    return match ? `${match[1] || ""}thumbs/${match[2]}.webp` : src;
+  };
+
   const splitIntoThree = (paths) => {
     const unique = [...new Set(paths.filter((path) => IMAGE_EXTENSIONS.test(path)))].sort((a, b) =>
       filenameFromPath(a).localeCompare(filenameFromPath(b), undefined, { numeric: true, sensitivity: "base" })
@@ -639,9 +646,12 @@
             .map((image) => `
               <figure class="visions-photo-card protected-image" tabindex="0" role="button" aria-label="Enlarge image" data-lightbox-item>
                 <img
-                  src="${escapeHtml(image.src)}"
+                  src="${escapeHtml(thumbnailFor(image.src))}"
+                  data-full="${escapeHtml(image.src)}"
+                  onerror="if (this.src !== this.dataset.full) { this.onerror = null; this.src = this.dataset.full; }"
                   alt="${escapeHtml(image.alt || image.title || gallery.title || "")}"
                   loading="lazy"
+                  decoding="async"
                   draggable="false"
                 />
               </figure>
@@ -692,7 +702,7 @@
     const image = item.querySelector("img");
     if (!image) return;
 
-    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.src = image.dataset.full || image.currentSrc || image.src;
     lightboxImage.alt = image.alt || "Expanded gallery image";
     lightboxCaption.textContent = "";
 

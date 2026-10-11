@@ -8,7 +8,7 @@
   "theme_color": "#050505",
   "icons": [
     {
-      "src": "/assets/paulbooth-ai-logo-transparent.png",
+      "src": "/assets/paulbooth-ai-icon-512.png",
       "sizes": "any",
       "type": "image/png",
       "purpose": "any"

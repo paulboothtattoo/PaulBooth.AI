@@ -21,7 +21,7 @@ body {
   background-color: #040505;
   background-image:
     linear-gradient(rgba(3,4,4,.62), rgba(3,4,4,.62)),
-    url("assets/page-background-tile.png");
+    url("assets/page-background-tile.webp");
   background-repeat: repeat-y;
   background-position: top center;
   background-size: 100% auto;
@@ -455,11 +455,11 @@ h2 { margin:0; font-size:clamp(43px,5vw,74px); line-height:.98; font-weight:400;
   z-index: 5;
   pointer-events: none;
   overflow: hidden;
-  -webkit-mask-image: url("assets/paulbooth-ai-logo-transparent.png");
+  -webkit-mask-image: url("assets/paulbooth-ai-logo-mask.webp");
   -webkit-mask-size: contain;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
-  mask-image: url("assets/paulbooth-ai-logo-transparent.png");
+  mask-image: url("assets/paulbooth-ai-logo-mask.webp");
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
@@ -485,7 +485,7 @@ h2 { margin:0; font-size:clamp(43px,5vw,74px); line-height:.98; font-weight:400;
   justify-items: center;
   gap: 18px;
   width: min(92vw, 760px);
-  animation: heroCopyEnter 1.2s ease 1.4s both;
+  /* Shown immediately; it used to fade in after a 1.4s delay (heroCopyEnter). */
 }
 .hero-manifesto {
   margin: 0;
@@ -1201,7 +1201,7 @@ body {
   background-color: #040505;
   background-image:
     linear-gradient(rgba(2, 3, 3, .52), rgba(2, 3, 3, .52)),
-    url("assets/page-background-tile.png");
+    url("assets/page-background-tile.webp");
   background-repeat: repeat-y;
   background-position: top center;
   background-size: 100% auto;
@@ -1218,7 +1218,7 @@ body::before {
   pointer-events: none;
   background:
     linear-gradient(rgba(2, 3, 3, .50), rgba(2, 3, 3, .50)),
-    url("assets/page-background-tile.png") top center / 100% auto repeat-y;
+    url("assets/page-background-tile.webp") top center / 100% auto repeat-y;
   transform: translateZ(0);
   will-change: transform;
 }

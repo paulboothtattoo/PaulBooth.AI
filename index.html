@@ -31,9 +31,9 @@
   <meta name="application-name" content="PaulBooth.ai" />
   <meta name="apple-mobile-web-app-title" content="PaulBooth.ai" />
   <meta name="format-detection" content="telephone=no" />
-  <link rel="icon" type="image/png" href="assets/paulbooth-ai-site-icon.png?v=20260807" />
-  <link rel="shortcut icon" type="image/png" href="assets/paulbooth-ai-site-icon.png?v=20260807" />
-  <link rel="apple-touch-icon" href="assets/paulbooth-ai-site-icon.png?v=20260807" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/paulbooth-ai-icon-32.png?v=20261011" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/paulbooth-ai-icon-192.png?v=20261011" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/paulbooth-ai-apple-touch-icon.png?v=20261011" />
 <link rel="manifest" href="site.webmanifest" />
 
   <script type="application/ld+json">
@@ -89,10 +89,10 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Oxanium:wght@300;400;500;600&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260811-contact-form" />
+<link rel="preload" as="image" href="assets/hero-logo-new.webp" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/hero-background-new.webp" type="image/webp" fetchpriority="high" />
+  <link rel="stylesheet" href="fonts.css?v=20261011" />
+  <link rel="stylesheet" href="styles.css?v=20261011" />
   <link rel="stylesheet" href="visions-galleries.css" />
   <link rel="stylesheet" href="image-protection.css" />
   <style id="realm-centering-fix">
@@ -693,7 +693,7 @@
       pointer-events: none;
       background:
         radial-gradient(circle at center, rgba(0,0,0,.10) 0%, rgba(0,0,0,.42) 58%, rgba(0,0,0,.78) 100%),
-        url('assets/page-fixed-bg-zoomed.png') center center / 95% auto no-repeat;
+        url('assets/page-background-tile.webp') center center / 95% auto no-repeat;
       opacity: .98;
       filter: contrast(1.06) brightness(.92);
       transform: scale(1.02);
@@ -733,7 +733,7 @@
       inset: 0;
       background:
         radial-gradient(circle at center, rgba(0,0,0,.10) 0%, rgba(0,0,0,.32) 50%, rgba(0,0,0,.72) 100%),
-        url('assets/hero-background-new.png') center center / cover no-repeat !important;
+        url('assets/hero-background-new.webp') center center / cover no-repeat !important;
       transform: scale(1.08);
       transform-origin: center center;
       filter: brightness(.86) contrast(1.08) saturate(.94);
@@ -1190,7 +1190,7 @@
     .hero-background-layer {
       background:
         radial-gradient(circle at center, rgba(0,0,0,.08) 0%, rgba(0,0,0,.26) 52%, rgba(0,0,0,.58) 100%),
-        url('assets/hero-background-new.png') center center / cover no-repeat !important;
+        url('assets/hero-background-new.webp') center center / cover no-repeat !important;
       transform: scale(1.06);
       filter: brightness(.82) contrast(1.08) saturate(.94);
       animation: heroBgPortalDrift 18s ease-in-out infinite alternate !important;
@@ -1264,7 +1264,7 @@
       pointer-events: none !important;
       background-image:
         radial-gradient(circle at center, rgba(0,0,0,.06) 0%, rgba(0,0,0,.20) 52%, rgba(0,0,0,.46) 100%),
-        url('assets/hero-background-new.png') !important;
+        url('assets/hero-background-new.webp') !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
       background-size: cover !important;
@@ -1656,7 +1656,7 @@
       z-index: 0 !important;
       background-image:
         radial-gradient(circle at center, rgba(0,0,0,.04) 0%, rgba(0,0,0,.16) 58%, rgba(0,0,0,.38) 100%),
-        url('assets/hero-background-new.png') !important;
+        url('assets/hero-background-new.webp') !important;
       background-repeat: no-repeat !important;
       background-position: center top !important;
       background-size: 100% 100% !important;
@@ -2037,7 +2037,7 @@
 
   <header class="site-header" id="top">
     <a class="mini-brand" href="#top" aria-label="PaulBooth.ai home">
-      <img class="pbai-header-logo" src="assets/hero-logo-new.png?v=20260807-header2" alt="" aria-hidden="true" />
+      <img class="pbai-header-logo" src="assets/hero-logo-new.webp" alt="" aria-hidden="true" />
       <span>PAULBOOTH.AI</span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
@@ -2091,7 +2091,7 @@
             <span class="fire-orb orb-9"></span>
             <span class="fire-orb orb-10"></span>
           </div>
-          <img class="official-logo" src="assets/hero-logo-new.png" alt="PaulBooth.ai biomechanical logo" />
+          <img class="official-logo" src="assets/hero-logo-new.webp" fetchpriority="high" alt="PaulBooth.ai biomechanical logo" />
         </div>
         <h1 class="hero-manifesto">Artificial Intelligence. <span>Biomechanical Design.</span> Digital Evolution.</h1>
       </div>
@@ -2228,9 +2228,9 @@
     <div class="footer-bottom"><span>&copy; <span id="year"></span> Paul Booth. All rights reserved.</span><span class="footer-legal"><a href="/terms/">Terms</a> &middot; <a href="/privacy/">Privacy</a></span></div>
   </footer>
 
-  <script src="content.js?v=20260804-vault-removed"></script>
+  <script src="content.js?v=20261011"></script>
   <script src="script.js?v=20260806-runtime-fix-v3"></script>
-  <script src="visions-galleries.js"></script>
+  <script src="visions-galleries.js?v=20261011"></script>
   <script src="image-protection.js"></script>
   <script src="contact-form.js?v=20260811"></script>
 
@@ -2484,7 +2484,7 @@
     @media(max-width:760px){.pb-final-video-grid{grid-template-columns:1fr!important}.pb-final-frame.vertical{width:min(68%,280px)!important}}
   `;
   document.head.appendChild(css);
-  const card=(item,i,type)=>{const [title,id,orientation,desc]=item;return `<article class="pb-final-card reveal visible"><div class="pb-final-frame ${orientation}"><a class="pb-final-overlay" href="https://www.youtube.com/watch?v=${encodeURIComponent(id)}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${esc(title)} on YouTube"><img src="https://i.ytimg.com/vi/${esc(id)}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(id)}/hqdefault.jpg'" alt="${esc(title)} poster" draggable="false"><span class="pb-final-play" aria-hidden="true"></span></a></div><div class="pb-final-copy"><span class="eyebrow">${type}</span><h3>${esc(title)}</h3>${desc?`<p>${esc(desc)}</p>`:""}<a class="pb-final-link" href="https://www.youtube.com/watch?v=${encodeURIComponent(id)}" target="_blank" rel="noopener noreferrer">Watch video</a></div></article>`};
+  const card=(item,i,type)=>{const [title,id,orientation,desc]=item;return `<article class="pb-final-card reveal visible"><div class="pb-final-frame ${orientation}"><a class="pb-final-overlay" href="https://www.youtube.com/watch?v=${encodeURIComponent(id)}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${esc(title)} on YouTube"><img src="https://i.ytimg.com/vi/${esc(id)}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(id)}/hqdefault.jpg'" alt="${esc(title)} poster" loading="lazy" decoding="async" draggable="false"><span class="pb-final-play" aria-hidden="true"></span></a></div><div class="pb-final-copy"><span class="eyebrow">${type}</span><h3>${esc(title)}</h3>${desc?`<p>${esc(desc)}</p>`:""}<a class="pb-final-link" href="https://www.youtube.com/watch?v=${encodeURIComponent(id)}" target="_blank" rel="noopener noreferrer">Watch video</a></div></article>`};
   const motionHTML=()=>motionItems.map((x,i)=>card(x,i,"Motion System")).join("");
   const machineHTML=()=>{const pdf=`<article class="pb-final-card reveal visible"><a class="pb-final-frame landscape" style="display:grid;place-items:center;text-decoration:none" href="content/machines/ThetaForge%20White%20Paper.pdf" target="_blank" rel="noopener"><span style="border:1px solid rgba(205,158,91,.7);padding:34px 24px;letter-spacing:.18em">PDF</span></a><div class="pb-final-copy"><span class="eyebrow">White Paper</span><h3>ThetaForge White Paper</h3><p>A Self-Voice Guided Neurocognitive Method for Behavioral Repatterning.</p><a class="pb-final-link" href="content/machines/ThetaForge%20White%20Paper.pdf" target="_blank" rel="noopener">Open white paper</a></div></article>`;return machineItems.map((x,i)=>card(x,i,"Intelligent Machine")).join("")+pdf};
   let repairing=false;
@@ -2504,62 +2504,6 @@
 })();
 </script>
 
-  <script id="pbai-hero-hover-pulse03">
-  (() => {
-    const init = () => {
-      const heroLogo = document.querySelector('#hero-animation .hero-logo-stage');
-      if (!heroLogo || heroLogo.dataset.pulse03Bound === 'true') return;
-      heroLogo.dataset.pulse03Bound = 'true';
-
-      const pulse = new Audio('assets/audio/pulse03.mp3?v=20260808a');
-      pulse.preload = 'auto';
-      pulse.volume = 1;
-
-      const playPulse = () => {
-        try {
-          pulse.pause();
-          pulse.currentTime = 0;
-          pulse.muted = false;
-          const result = pulse.play();
-          if (result && typeof result.catch === 'function') result.catch(() => {});
-        } catch (_) {}
-      };
-
-      heroLogo.addEventListener('mouseenter', playPulse);
-
-      // Prime the media element after the visitor's first real interaction so
-      // browsers that gate audio can allow later hover playback.
-      const unlock = () => {
-        try {
-          pulse.muted = true;
-          const result = pulse.play();
-          if (result && typeof result.then === 'function') {
-            result.then(() => {
-              pulse.pause();
-              pulse.currentTime = 0;
-              pulse.muted = false;
-            }).catch(() => { pulse.muted = false; });
-          } else {
-            pulse.pause();
-            pulse.currentTime = 0;
-            pulse.muted = false;
-          }
-        } catch (_) { pulse.muted = false; }
-        window.removeEventListener('pointerdown', unlock, true);
-        window.removeEventListener('keydown', unlock, true);
-      };
-
-      window.addEventListener('pointerdown', unlock, { capture: true, once: true });
-      window.addEventListener('keydown', unlock, { capture: true, once: true });
-    };
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init, { once: true });
-    } else {
-      init();
-    }
-  })();
-  </script>
 
 
   <!-- Cloudflare Web Analytics -->
