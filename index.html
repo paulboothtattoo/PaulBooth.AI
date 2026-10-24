@@ -95,6 +95,7 @@
   <link rel="stylesheet" href="styles.css?v=20261011" />
   <link rel="stylesheet" href="visions-galleries.css" />
   <link rel="stylesheet" href="image-protection.css" />
+  <link rel="stylesheet" href="/consent.css?v=20261024" />
   <style id="realm-centering-fix">
     .realms {
       background: #000;
@@ -2178,7 +2179,7 @@
         <p>Send a message through this form and it will reach Paul directly. For tattoo project submissions, use the inquiry form at <a href="https://paulboothart.com/#appointment">PaulBoothArt.com</a>.</p>
       </div>
 
-      <form class="contact-form" data-pb-contact data-site="ai" novalidate>
+      <form class="contact-form" data-pb-contact data-site="ai" data-clarity-mask="true" novalidate>
         <label>
           Name *
           <input type="text" name="name" autocomplete="name" required>
@@ -2225,7 +2226,7 @@
 
       <div><span>Sister Sites</span><a href="https://paulboothart.com/">PaulBoothArt.com</a><a href="https://paulboothbrand.com/">PaulBoothBrand.com</a><a href="https://darkimages.com/">DarkImages.com</a></div>
     </div>
-    <div class="footer-bottom"><span>&copy; <span id="year"></span> Paul Booth. All rights reserved.</span><span class="footer-legal"><a href="/terms/">Terms</a> &middot; <a href="/privacy/">Privacy</a></span></div>
+    <div class="footer-bottom"><span>&copy; <span id="year"></span> Paul Booth. All rights reserved.</span><span class="footer-legal"><a href="/terms/">Terms</a> &middot; <a href="/privacy/">Privacy</a> &middot; <button type="button" data-consent-open>Cookie choices</button></span></div>
   </footer>
 
   <script src="content.js?v=20261011"></script>
@@ -2509,6 +2510,9 @@
   <!-- Cloudflare Web Analytics -->
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "72e2b1891cea4345a11c08bf934d4db2"}'></script>
   <!-- End Cloudflare Web Analytics -->
+
+  <!-- Cookie consent; loads Microsoft Clarity only once allowed -->
+  <script src="/consent.js?v=20261024" defer></script>
 </body>
 </html>
 
